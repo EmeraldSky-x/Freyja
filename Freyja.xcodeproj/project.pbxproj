@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */; };
 		FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */; };
-		FF04E0402C9EA7EB00F89E10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03F2C9EA7EB00F89E10 /* ViewController.swift */; };
+		FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */; };
 		FF04E0432C9EA7EB00F89E10 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF04E0422C9EA7EB00F89E10 /* Base */; };
 		FF04E0452C9EA7EC00F89E10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF04E0442C9EA7EC00F89E10 /* Assets.xcassets */; };
 		FF04E0482C9EA7EC00F89E10 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF04E0472C9EA7EC00F89E10 /* Base */; };
 		FF04E0532C9EA7EC00F89E10 /* FreyjaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E0522C9EA7EC00F89E10 /* FreyjaTests.swift */; };
 		FF04E05D2C9EA7EC00F89E10 /* FreyjaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */; };
 		FF04E05F2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */; };
+		FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1536D2CC57F800023CE51 /* KnobView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 		FF04E0382C9EA7EB00F89E10 /* Freyja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freyja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF04E03F2C9EA7EB00F89E10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		FF04E0422C9EA7EB00F89E10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF04E0442C9EA7EC00F89E10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF04E0472C9EA7EC00F89E10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		FF04E0582C9EA7EC00F89E10 /* FreyjaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreyjaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITests.swift; sourceTree = "<group>"; };
 		FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FFF1536D2CC57F800023CE51 /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +103,8 @@
 			children = (
 				FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */,
 				FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */,
-				FF04E03F2C9EA7EB00F89E10 /* ViewController.swift */,
+				FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */,
+				FFF1536F2CC57FAF0023CE51 /* Reusables */,
 				FF04E0412C9EA7EB00F89E10 /* Main.storyboard */,
 				FF04E0442C9EA7EC00F89E10 /* Assets.xcassets */,
 				FF04E0462C9EA7EC00F89E10 /* LaunchScreen.storyboard */,
@@ -125,6 +128,22 @@
 				FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */,
 			);
 			path = FreyjaUITests;
+			sourceTree = "<group>";
+		};
+		FFF1536F2CC57FAF0023CE51 /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+				FFF153702CC57FD00023CE51 /* View */,
+			);
+			path = Reusables;
+			sourceTree = "<group>";
+		};
+		FFF153702CC57FD00023CE51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFF1536D2CC57F800023CE51 /* KnobView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +277,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF04E0402C9EA7EB00F89E10 /* ViewController.swift in Sources */,
+				FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */,
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
+				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
 				FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
