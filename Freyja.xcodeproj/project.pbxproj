@@ -16,6 +16,7 @@
 		FF04E0532C9EA7EC00F89E10 /* FreyjaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E0522C9EA7EC00F89E10 /* FreyjaTests.swift */; };
 		FF04E05D2C9EA7EC00F89E10 /* FreyjaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */; };
 		FF04E05F2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */; };
+		FFB621F12CC815FB00370355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB621F02CC815FB00370355 /* Extensions.swift */; };
 		FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1536D2CC57F800023CE51 /* KnobView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		FF04E0582C9EA7EC00F89E10 /* FreyjaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreyjaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITests.swift; sourceTree = "<group>"; };
 		FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FFB621F02CC815FB00370355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FFF1536D2CC57F800023CE51 /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */,
 				FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */,
 				FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */,
+				FFB621EF2CC815E100370355 /* Helpers */,
 				FFF1536F2CC57FAF0023CE51 /* Reusables */,
 				FF04E0412C9EA7EB00F89E10 /* Main.storyboard */,
 				FF04E0442C9EA7EC00F89E10 /* Assets.xcassets */,
@@ -128,6 +131,14 @@
 				FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */,
 			);
 			path = FreyjaUITests;
+			sourceTree = "<group>";
+		};
+		FFB621EF2CC815E100370355 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FFB621F02CC815FB00370355 /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		FFF1536F2CC57FAF0023CE51 /* Reusables */ = {
@@ -277,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB621F12CC815FB00370355 /* Extensions.swift in Sources */,
 				FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */,
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
 				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
@@ -462,7 +474,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2V4U7L99P9;
+				DEVELOPMENT_TEAM = TYCWQ2TQB6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Freyja/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -490,7 +502,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2V4U7L99P9;
+				DEVELOPMENT_TEAM = TYCWQ2TQB6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Freyja/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -20,7 +20,7 @@ class KnobView: UIView {
         shape.colors = [
             
             UIColor(red: 0.10, green: 0.11, blue: 0.14, alpha: 1.0).cgColor,
-            UIColor(red: 0.23, green: 0.24, blue: 0.26, alpha: 1.20).cgColor
+            UIColor(red: 0.23, green: 0.24, blue: 0.26, alpha: 1.0).cgColor
         ]
         shape.frame = self.bounds
         shape.locations = [0.30, 1.0]
@@ -29,26 +29,15 @@ class KnobView: UIView {
         shape.mask = backgroundEllipse
         return shape
     }()
-    
-    lazy var ellipseOneShape: CAShapeLayer = {
-        let shape = CAShapeLayer()
-        let path = UIBezierPath(ovalIn: self.bounds)
-        shape.path = path.cgPath
-        return shape
-    }()
     lazy var ellipsseOneColorGradient: CAGradientLayer = {
-        let shape = CAGradientLayer()
-        shape.colors = [
-            UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor,
-            UIColor(red: 0.23, green: 0.24, blue: 0.26, alpha: 0.15).cgColor
-            
-        ]
-        shape.frame = self.bounds
-        shape.locations = [0.50, 0.70]
-        shape.startPoint = CGPoint(x: 0, y: 1)
-        shape.endPoint = CGPoint(x: 0, y: 0)
-        shape.mask = ellipseOneShape
-        return shape
+            let shape = CAShapeLayer()
+            let path = UIBezierPath(ovalIn: self.bounds)
+            shape.path = path.cgPath
+        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor,
+                       UIColor(red: 0.23, green: 0.24, blue: 0.26, alpha: 0.15).cgColor],
+                                   locations: [0.50, 0.70], maskLayer: shape)
+        gradient.frame = self.bounds
+        return gradient
     }()
     
     lazy var subEllipseTwoShape: CAShapeLayer = {
@@ -58,17 +47,24 @@ class KnobView: UIView {
         return shape
     }()
     lazy var subEllipseTwoColorGradient: CAGradientLayer = {
-        let shape = CAGradientLayer()
-        shape.colors = [
+        let shape = CAShapeLayer()
+        let path = UIBezierPath(ovalIn: CGRect(x: 27, y: 27, width: self.bounds.width - 54, height: self.bounds.height - 54))
+        shape.path = path.cgPath
+        let gradient = CAGradientLayer.returnGradient( colors: [
             UIColor(red: 0.10, green: 0.11, blue: 0.14, alpha: 0.10).cgColor,
             UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor
-        ]
-        shape.frame = self.bounds
-        shape.locations = [0.60, 1.0]
-        shape.startPoint = CGPoint(x: 0, y: 0)
-        shape.endPoint = CGPoint(x: 0, y: 1)
-        shape.mask = subEllipseTwoShape
-        return shape
+        ],locations: [0.60, 1.0], maskLayer: shape)
+//        let shape = CAGradientLayer()
+//        shape.colors = [
+//            UIColor(red: 0.10, green: 0.11, blue: 0.14, alpha: 0.10).cgColor,
+//            UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor
+//        ]
+        gradient.frame = self.bounds
+//        shape.locations = [0.60, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+//        shape.mask = subEllipseTwoShape
+        return gradient
     }()
     lazy var backgroundellipseTwoShape: CAShapeLayer = {
         let shape = CAShapeLayer()
@@ -151,9 +147,59 @@ class KnobView: UIView {
         return shape
     }()
     
+    lazy var whiteIndicationLight: CAShapeLayer = {
+        let shape = CAShapeLayer()
+        let width = self.bounds.width * 2.5 / 100
+        let topDistance: CGFloat = 17.3 * 346 / 100
+        let path = UIBezierPath(ovalIn: CGRect(x: (self.bounds.width / 2) - width / 2, y: topDistance, width: width, height: width))
+        /*UIBezierPath(ovalIn: CGRect(x: 100, y: 100, width: self.bounds.width - 200, height: self.bounds.height - 200))*/
+        shape.path = path.cgPath
+        shape.fillColor = UIColor.white.cgColor
+        shape.shadowColor = UIColor.white.cgColor
+        shape.shadowRadius = 10
+        shape.shadowOpacity = 1.0
+        shape.shadowOffset = CGSize(width: 1, height: 1)
+        return shape
+    }()
+//    lazy var whiteIndicationLightColorGradient: CAGradientLayer = {
+//        let shape = CAGradientLayer()
+//        shape.frame = self.bounds
+//        shape.colors = [
+//            UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor,
+//            UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00).cgColor,
+//        ]
+//        shape.locations = [1.0, 1.0]
+//        shape.startPoint = CGPoint(x: 0, y: 0)
+//        shape.endPoint = CGPoint(x: 0, y: 1)
+//        shape.mask = whiteIndicationLight
+//        return shape
+//    }()
+    
+    
+    
+    lazy var backgroundEllipseFourColorShape: CAShapeLayer = {
+        let shape = CAShapeLayer()
+        let path = UIBezierPath(ovalIn: CGRect(x: 90, y: 90, width: self.bounds.width - 180, height: self.bounds.height - 184))
+        shape.path = path.cgPath
+        return shape
+    }()
+    lazy var backgroundEllipseFourColorGradient: CAGradientLayer = {
+        let shape = CAGradientLayer()
+        shape.frame = self.bounds
+        shape.colors = [
+            UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.50).cgColor,
+            UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.10).cgColor
+        ]
+        shape.locations = [0.40, 0.0]
+        shape.startPoint = CGPoint(x: 0, y: 1)
+        shape.endPoint = CGPoint(x: 0, y: 0)
+        shape.mask = backgroundEllipseFourColorShape
+        return shape
+    }()
+    
     lazy var ellipseFourColorShape: CAShapeLayer = {
         let shape = CAShapeLayer()
-        let path = UIBezierPath(ovalIn: CGRect(x: 90, y: 90, width: self.bounds.width - 180, height: self.bounds.height - 180))
+        let path = UIBezierPath(ovalIn: CGRect(x: 91, y: 91, width: self.bounds.width - 182, height: self.bounds.height - 182))
         shape.path = path.cgPath
         return shape
     }()
@@ -192,6 +238,8 @@ extension KnobView {
         self.layer.addSublayer(ellipseTwoColorGradient)
         self.layer.addSublayer(backgroundColourEllipseThreeColorGradient)
         self.layer.addSublayer(ellipseThreeColorGradient)
+        self.layer.addSublayer(backgroundEllipseFourColorGradient)
+        self.layer.addSublayer(whiteIndicationLight)
         self.layer.addSublayer(ellipseFourColorGradient)
         
     }
