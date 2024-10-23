@@ -7,6 +7,31 @@
 import UIKit
 
 class HomeController: UIViewController {
+//    lazy var shadowLayer: CAShapeLayer = {
+//        let shape = CAShapeLayer()
+//        shape.fillColor = UIColor.green.cgColor
+//        let path = UIBezierPath(ovalIn: CGRect(x: (self.view.bounds.width / 2) - 100, y: (self.view.bounds.height / 2 ) - 100, width: 200, height: 200))
+//        shape.path = path.cgPath
+//        shape.shadowColor = UIColor.red.cgColor
+//        shape.shadowRadius = 5
+//        shape.shadowOffset = CGSize(width: 20, height: 20)
+//        shape.shadowPath = path.cgPath
+//        shape.opacity = 1.0
+//        return shape
+//    }()
+    
+//    lazy var backgroundLightShadowEllipse: CAShapeLayer = {
+//            let shape = CAShapeLayer()
+//        let path = UIBezierPath(ovalIn: CGRect(x: 3, y: 3, width: self.view.bounds.width - 6, height: self.view.bounds.height - 6)).cgPath
+//            shape.path = path
+//            shape.fillColor = UIColor(red: 0.17, green: 0.18, blue: 0.21, alpha: 1.00).cgColor
+//            shape.shadowColor = UIColor.black.cgColor
+//            shape.shadowOffset = CGSize(width: 0, height: 0)
+//            shape.shadowRadius = 20
+//            shape.shadowOpacity = 0.2
+//            return shape
+//        }()
+    
     lazy var gradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.colors = [
@@ -28,6 +53,9 @@ class HomeController: UIViewController {
 }
 extension HomeController {
     func initViews() {
+//        view.layer.addSublayer(backgroundLightShadowEllipse)
+        
+        
         self.view.layer.insertSublayer(gradientLayer, at:0)
         self.view.addSubview(knobView)
         knobView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,5 +64,6 @@ extension HomeController {
          knobView.heightAnchor.constraint(equalToConstant: 346),
          knobView.widthAnchor.constraint(equalToConstant: 346)
         ].forEach({ $0.isActive = true })
+        
     }
 }

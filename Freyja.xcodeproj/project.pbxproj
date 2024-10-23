@@ -17,6 +17,7 @@
 		FF04E05D2C9EA7EC00F89E10 /* FreyjaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */; };
 		FF04E05F2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */; };
 		FFB621F12CC815FB00370355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB621F02CC815FB00370355 /* Extensions.swift */; };
+		FFB621F32CC8DDD600370355 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB621F22CC8DDD600370355 /* ShadowView.swift */; };
 		FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1536D2CC57F800023CE51 /* KnobView.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITests.swift; sourceTree = "<group>"; };
 		FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FFB621F02CC815FB00370355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FFB621F22CC8DDD600370355 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		FFF1536D2CC57F800023CE51 /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */,
 				FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */,
 				FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */,
+				FFB621F22CC8DDD600370355 /* ShadowView.swift */,
 				FFB621EF2CC815E100370355 /* Helpers */,
 				FFF1536F2CC57FAF0023CE51 /* Reusables */,
 				FF04E0412C9EA7EB00F89E10 /* Main.storyboard */,
@@ -292,6 +295,7 @@
 				FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */,
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
 				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
+				FFB621F32CC8DDD600370355 /* ShadowView.swift in Sources */,
 				FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,7 +404,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -457,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -480,14 +484,15 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.emaraldsky.freyja.Freyja;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emeraldskyx.freyja;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -508,14 +513,15 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.emaraldsky.freyja.Freyja;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emeraldskyx.freyja;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
