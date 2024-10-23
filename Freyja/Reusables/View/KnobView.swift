@@ -98,7 +98,7 @@ class KnobView: UIView {
     }()
     lazy var knobBaseShape: CAGradientLayer = {
         let shape = CAShapeLayer()
-        let path = UIBezierPath(ovalIn: CGRect(x: 48, y: 48, width: self.bounds.width - 96, height: self.bounds.height - 96))
+        let path = UIBezierPath(ovalIn: CGRect(x: 40, y: 40, width: self.bounds.width - 80, height: self.bounds.height - 80))
         shape.path = path.cgPath
         let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 0.20, green: 0.21, blue: 0.24, alpha: 1.00).cgColor,
                                                                UIColor(red: 0.16, green: 0.17, blue: 0.20, alpha: 1.00).cgColor],
@@ -111,7 +111,7 @@ class KnobView: UIView {
     }()
     lazy var knobOuterReflection: CAGradientLayer = {
         let shape = CAShapeLayer()
-        let path = UIBezierPath(ovalIn: CGRect(x: 46, y: 46, width: self.bounds.width - 92, height: self.bounds.height - 92))
+        let path = UIBezierPath(ovalIn: CGRect(x: 39, y: 39, width: self.bounds.width - 78, height: self.bounds.height - 78))
         shape.path = path.cgPath
         
         let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor,
