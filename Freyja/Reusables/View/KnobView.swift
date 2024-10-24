@@ -51,11 +51,13 @@ class KnobView: UIView {
     }()
     lazy var outerRimInnerReflection: CAGradientLayer = {
         let shape = CAShapeLayer()
-        let path = UIBezierPath(ovalIn: CGRect(x: 27, y: 27, width: self.bounds.width - 54, height: self.bounds.height - 54))
+        let width = self.bounds.width * 84 / 100
+        let padding = self.bounds.width * 8.20 / 100
+        let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: width, height: width))
         shape.path = path.cgPath
         let gradient = CAGradientLayer.returnGradient( colors: [
             UIColor(red: 0.10, green: 0.11, blue: 0.14, alpha: 0.10).cgColor,
-            UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor
+            UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor,
         ],locations: [0.60, 1.0], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -112,7 +114,6 @@ class KnobView: UIView {
         gradient.endPoint = CGPoint(x: 0, y: 1)
         return gradient
     }()
-//    
     lazy var whiteIndicationLight: CAShapeLayer = {
         let shape = CAShapeLayer()
         let width = self.bounds.width * 2.5 / 100
@@ -176,6 +177,7 @@ extension KnobView {
         self.layer.addSublayer(whiteIndicationLight)
         self.layer.addSublayer(screenShadow)
         self.layer.addSublayer(screenShape)
+        
     }
 }
 
