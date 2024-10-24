@@ -49,16 +49,6 @@ class KnobView: UIView {
         gradient.opacity = 1.0
         return gradient
     }()
-    lazy var ellipsseOneColorGradient: CAGradientLayer = {
-            let shape = CAShapeLayer()
-            let path = UIBezierPath(ovalIn: self.bounds)
-            shape.path = path.cgPath
-        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor,
-                       UIColor(red: 0.23, green: 0.24, blue: 0.26, alpha: 0.15).cgColor],
-                                   locations: [0.50, 0.70], maskLayer: shape)
-        gradient.frame = self.bounds
-        return gradient
-    }()
     lazy var outerRimInnerReflection: CAGradientLayer = {
         let shape = CAShapeLayer()
         let path = UIBezierPath(ovalIn: CGRect(x: 27, y: 27, width: self.bounds.width - 54, height: self.bounds.height - 54))
