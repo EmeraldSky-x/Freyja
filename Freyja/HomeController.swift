@@ -28,9 +28,6 @@ class HomeController: UIViewController {
 }
 extension HomeController {
     func initViews() {
-//        view.layer.addSublayer(backgroundLightShadowEllipse)
-        
-        
         self.view.layer.insertSublayer(gradientLayer, at:0)
         self.view.addSubview(knobView)
         knobView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +36,5 @@ extension HomeController {
          knobView.heightAnchor.constraint(equalToConstant: 346),
          knobView.widthAnchor.constraint(equalToConstant: 346)
         ].forEach({ $0.isActive = true })
-        
     }
 }
