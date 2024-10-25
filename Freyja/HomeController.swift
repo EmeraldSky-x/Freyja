@@ -19,11 +19,18 @@ class HomeController: UIViewController {
     }()
     lazy var knobView : KnobView = {
         let view = KnobView()
+        view.delegate = self
         return view
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
+    }
+}
+extension HomeController: KnobViewDelegate {
+    func tappedOnScreen() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
     }
 }
 extension HomeController {

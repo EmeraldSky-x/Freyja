@@ -16,6 +16,8 @@
 		FF04E0532C9EA7EC00F89E10 /* FreyjaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E0522C9EA7EC00F89E10 /* FreyjaTests.swift */; };
 		FF04E05D2C9EA7EC00F89E10 /* FreyjaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */; };
 		FF04E05F2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */; };
+		FF968AAD2CCA5A0800B08FD6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968AAC2CCA5A0800B08FD6 /* Constants.swift */; };
+		FF968AB12CCAB43300B08FD6 /* KnobViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968AB02CCAB43300B08FD6 /* KnobViewDelegate.swift */; };
 		FFB621F12CC815FB00370355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB621F02CC815FB00370355 /* Extensions.swift */; };
 		FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1536D2CC57F800023CE51 /* KnobView.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +53,8 @@
 		FF04E0582C9EA7EC00F89E10 /* FreyjaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreyjaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITests.swift; sourceTree = "<group>"; };
 		FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FF968AAC2CCA5A0800B08FD6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FF968AB02CCAB43300B08FD6 /* KnobViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobViewDelegate.swift; sourceTree = "<group>"; };
 		FFB621F02CC815FB00370355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FFF1536D2CC57F800023CE51 /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				FFB621F02CC815FB00370355 /* Extensions.swift */,
+				FF968AAC2CCA5A0800B08FD6 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				FFF1536D2CC57F800023CE51 /* KnobView.swift */,
+				FF968AB02CCAB43300B08FD6 /* KnobViewDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -292,7 +298,9 @@
 				FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */,
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
 				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
+				FF968AB12CCAB43300B08FD6 /* KnobViewDelegate.swift in Sources */,
 				FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */,
+				FF968AAD2CCA5A0800B08FD6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,7 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TYCWQ2TQB6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Freyja/Info.plist;
@@ -502,7 +510,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TYCWQ2TQB6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Freyja/Info.plist;
