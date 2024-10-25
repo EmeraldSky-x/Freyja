@@ -59,10 +59,9 @@ class KnobView: UIView {
         let padding = self.bounds.width * 8.50 / 100
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: width, height: width))
         shape.path = path.cgPath
-        let gradient = CAGradientLayer.returnGradient( colors: [
-            UIColor(red: 0.10, green: 0.11, blue: 0.14, alpha: 0.10).cgColor,
-            UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor,
-        ],locations: [0.60, 1.0], maskLayer: shape)
+        let gradient = CAGradientLayer.returnGradient( colors: [UIColor.rimOuterReflectionColorStart.cgColor,
+                                                                UIColor.rimOuterReflectionColorEnd.cgColor],
+                                                       locations: [0.60, 1.0], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
@@ -74,8 +73,8 @@ class KnobView: UIView {
         let padding = self.bounds.width * 8.10 / 100
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: width, height: width))
         shape.path = path.cgPath
-        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.68).cgColor,
-                                                               UIColor.white.cgColor],
+        let gradient = CAGradientLayer.returnGradient(colors: [UIColor.grooveShapeColorStart.cgColor,
+                                                               UIColor.grooveShapeColorEnd.cgColor,],
                                                       locations: [1.0, 0.40], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -88,8 +87,8 @@ class KnobView: UIView {
         let padding = self.bounds.width * 8.50 / 100
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: width, height: width))
         shape.path = path.cgPath
-        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 0.09, green: 0.09, blue: 0.11, alpha: 1.0).cgColor,
-                                                               UIColor(red: 0.13, green: 0.15, blue: 0.17, alpha: 0.50).cgColor],
+        let gradient = CAGradientLayer.returnGradient(colors: [UIColor.grooveGradientColorStart.cgColor,
+                                                               UIColor.grooveGradientColorEnd.cgColor],
                                                       locations: [0.60, 1.0], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -101,8 +100,8 @@ class KnobView: UIView {
         let padding = self.bounds.width * 11.50 / 100
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: self.bounds.width - (padding * 2), height: self.bounds.height - (padding * 2)))
         shape.path = path.cgPath
-        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 0.20, green: 0.21, blue: 0.24, alpha: 1.00).cgColor,
-                                                               UIColor(red: 0.16, green: 0.17, blue: 0.20, alpha: 1.00).cgColor],
+        let gradient = CAGradientLayer.returnGradient(colors: [UIColor.knobBaseShapeColorStart.cgColor,
+                                                               UIColor.knobBaseShapeColorEnd.cgColor],
                                                       locations: [0.30, 0.90], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -117,8 +116,8 @@ class KnobView: UIView {
         shape.path = path.cgPath
         shape.shadowOffset = CGSize(width: -1, height: -1)
         
-        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20).cgColor,
-                                                               UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.40).cgColor],
+        let gradient = CAGradientLayer.returnGradient(colors: [UIColor.knobOuterReflectionColorStart.cgColor,
+                                                               UIColor.knobOuterReflectionColorEnd.cgColor],
                                                       locations: [0.25, 0.50], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -155,8 +154,8 @@ class KnobView: UIView {
         let padding = self.bounds.width * 26.01 / 100
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: self.bounds.width - (padding * 2), height: self.bounds.height - (padding * 2)))
         shape.path = path.cgPath
-        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 0.10, green: 0.11, blue: 0.14, alpha: 1.00).cgColor,
-                                                               UIColor.black.cgColor],
+        let gradient = CAGradientLayer.returnGradient(colors: [UIColor.screenShapeColorStart.cgColor,
+                                                               UIColor.screenShapeColorEnd.cgColor],
                                                       locations: [0.40, 1.0], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -182,7 +181,6 @@ class KnobView: UIView {
 extension KnobView {
     func initViews() {
         self.backgroundColor = .clear
-        
         self.layer.addSublayer(outerRimLightShadow)
         self.layer.addSublayer(outerRimDarkShadow)
         self.layer.addSublayer(outerRimShape)
