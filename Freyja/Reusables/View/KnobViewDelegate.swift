@@ -9,4 +9,5 @@ import Foundation
 
 protocol KnobViewDelegate: AnyObject {
     func tappedOnScreen()
+    func rotatedToAngle(_ angle: Double)
 }

@@ -22,6 +22,7 @@ class HomeController: UIViewController {
         view.delegate = self
         return view
     }()
+    var currentAngleStep: Int = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
@@ -31,6 +32,15 @@ extension HomeController: KnobViewDelegate {
     func tappedOnScreen() {
         let generator = UIImpactFeedbackGenerator(style: .heavy)
         generator.impactOccurred()
+    }
+    func rotatedToAngle(_ angle: Double) {
+        var angleStep = Int(angle / 30)
+        if angleStep != currentAngleStep {
+            currentAngleStep = angleStep
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.impactOccurred()
+            print("BAMMMM")
+        }
     }
 }
 extension HomeController {

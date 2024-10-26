@@ -125,25 +125,22 @@ class KnobView: UIView {
         gradient.endPoint = CGPoint(x: 1, y: 1)
         return gradient
     }()
-    lazy var rotationBaseShape: CAGradientLayer = {
-            let shape = CAShapeLayer()
-            let padding = self.bounds.width * 11.50 / 100
-            let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: self.bounds.width - (padding * 2), height: self.bounds.height - (padding * 2)))
-            shape.path = path.cgPath
-            let gradient = CAGradientLayer.returnGradient(colors: [UIColor.clear.cgColor,
-                                                                   UIColor.clear.cgColor],
-                                                          locations: [0.30, 0.90], maskLayer: shape)
-            gradient.frame = self.bounds
-            gradient.startPoint = CGPoint(x: 0, y: 0)
-            gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-            gradient.type = .radial
-            return gradient
-        }()
+    lazy var rotationBaseShape: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
     lazy var whiteIndicationLight: CAShapeLayer = {
         let shape = CAShapeLayer()
         let width = self.bounds.width * 2.5 / 100
         let topDistance: CGFloat = 17.3 * self.bounds.width / 100
-        let path = UIBezierPath(ovalIn: CGRect(x: (self.bounds.width / 2) - width / 2, y: topDistance, width: width, height: width))
+        
+        let parentViewPadding = self.bounds.width * 11.50 / 100
+        let parentViewSize = self.bounds.width - (2 * parentViewPadding)
+        let topDistanceNew: CGFloat = 7.69 * parentViewSize / 100
+        
+        
+        let path = UIBezierPath(ovalIn: CGRect(x: (parentViewSize / 2) - width / 2, y: topDistanceNew, width: width, height: width))
         shape.path = path.cgPath
         shape.fillColor = UIColor.white.cgColor
         shape.shadowColor = UIColor.white.cgColor
@@ -181,10 +178,10 @@ class KnobView: UIView {
             let point = CGPoint(x: self.center.x, y: 0)
             return point
         }()
-//    lazy var panGesture: UIPanGestureRecognizer = {
-//        let gesture = UIPanGestureRecognizer(target: self, action: #selector(panDetected(sender:)))
-//        return gesture
-//    }()
+    lazy var panGesture: UIPanGestureRecognizer = {
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(panDetected(sender:)))
+        return gesture
+    }()
     lazy var leftTopPadding: CGFloat = {
         let padding = self.bounds.width * 11.50 / 100
         return padding
@@ -192,6 +189,11 @@ class KnobView: UIView {
     lazy var rightBottomPadding: CGFloat = {
         let padding = self.bounds.width - (leftTopPadding)
         return padding
+    }()
+    var dummyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -203,64 +205,44 @@ class KnobView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         initViews()
-        self.addGestureRecognizer(tapGesture)
-//        self.addGestureRecognizer(panGesture)
+        self.addGestureRecognizer(panGesture)
     }
     @objc func screenTapped(sender: UITapGestureRecognizer) {
-        let location = sender.location(in: self)
-        if location.x > leftTopPadding && location.y > leftTopPadding && location.x < rightBottomPadding && location.y < rightBottomPadding {
-//                        rotateShapeLayer(whiteIndicationLight, around: CGPoint(x: 10, y: 10), byAngle: .pi / 4)
-            delegate?.tappedOnScreen()
-//            rotateShapeLayer(whiteIndicationLight, around: CGPoint(x: 10, y: 10), byAngle: .pi / 4)
+        
+    }
+    @objc func panDetected(sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .changed:
             let location = sender.location(in: self)
-            let pointA = location
-            let pointB = CGPoint(x: self.bounds.width / 2, y: self.bounds.width / 2)
-            let pointC = CGPoint(x: self.bounds.width / 2, y: 0)
-            let angle = angleBetweenPoints(pointA: pointA, pointB: pointB, pointC: pointC)
-            print("Location: \(location), pointB: \(pointB), pointC: \(pointC)")
-            print("Angle: \(angle) degrees")
-            if angle.truncatingRemainder(dividingBy: 30) == 0 {
-                let generator = UIImpactFeedbackGenerator(style: .heavy)
-                generator.impactOccurred()
-                print("IMPACT")
+            if location.x > leftTopPadding && location.y > leftTopPadding && location.x < rightBottomPadding && location.y < rightBottomPadding {
+                let pointA = location
+                let pointB = CGPoint(x: self.bounds.width / 2, y: self.bounds.width / 2)
+                let pointC = CGPoint(x: self.bounds.width / 2, y: 0)
+                var angle = angleBetweenPoints(pointA: pointA, pointB: pointB, pointC: pointC)
+                if dummyView.frame.contains(location) {
+                    angle = 360 - angle
+                }
+                
+                let rotate = CGAffineTransform(rotationAngle: angle / 180 * .pi)
+                rotationBaseShape.transform = rotate
+                delegate?.rotatedToAngle(angle)
+            } else {
             }
-            let animation = CABasicAnimation(keyPath: "transform")
-            animation.duration = 0.1
-            animation.fromValue = 0.0
-            animation.toValue = angle
-            animation.fillMode = .forwards
-            animation.isRemovedOnCompletion = false
-            animation.isCumulative = true
-            animation.repeatCount = .infinity
-            rotationBaseShape.transform = CATransform3DRotate(CATransform3DIdentity, (angle), 0, 0, 1)
-            //        rotationBaseShape.add(animation, forKey: UUID().description)
+            
+        default:
+            break
         }
-            }
-            func angleBetweenPoints(pointA: CGPoint, pointB: CGPoint, pointC: CGPoint) -> CGFloat {
-                let vectorAB = CGPoint(x: pointA.x - pointB.x, y: pointA.y - pointB.y)
-                let vectorBC = CGPoint(x: pointC.x - pointB.x, y: pointC.y - pointB.y)
-                let dotProduct = vectorAB.x * vectorBC.x + vectorAB.y * vectorBC.y
-                let magnitudeAB = sqrt(vectorAB.x * vectorAB.x + vectorAB.y * vectorAB.y)
-                let magnitudeBC = sqrt(vectorBC.x * vectorBC.x + vectorBC.y * vectorBC.y)
-                let cosAngle = dotProduct / (magnitudeAB * magnitudeBC)
-                let angle = acos(cosAngle) * 180 / .pi
-                return angle
-            }
-//    @objc func panDetected(sender: UIPanGestureRecognizer) {
-//        let location = sender.location(in: self)
-//        if location.x > leftTopPadding && location.y > leftTopPadding && location.x < rightBottomPadding && location.y < rightBottomPadding {
-//            rotateShapeLayer(whiteIndicationLight, around: CGPoint(x: 10, y: 10), byAngle: .pi / 4)
-//        }
-//    }
-//    func rotateShapeLayer(_ shapeLayer: CAShapeLayer, around pivot: CGPoint, byAngle angle: CGFloat) {
-//        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
-//        animation.fromValue = CGFloat.pi * 2
-//        animation.toValue = 0
-//        animation.duration = 8
-//        animation.isCumulative = true
-//        animation.repeatCount = Float.greatestFiniteMagnitude
-//        whiteIndicationLight.add(animation, forKey: "rotationAnimation")
-//    }
+    }
+    func angleBetweenPoints(pointA: CGPoint, pointB: CGPoint, pointC: CGPoint) -> CGFloat {
+        let vectorAB = CGPoint(x: pointA.x - pointB.x, y: pointA.y - pointB.y)
+        let vectorBC = CGPoint(x: pointC.x - pointB.x, y: pointC.y - pointB.y)
+        let dotProduct = vectorAB.x * vectorBC.x + vectorAB.y * vectorBC.y
+        let magnitudeAB = sqrt(vectorAB.x * vectorAB.x + vectorAB.y * vectorAB.y)
+        let magnitudeBC = sqrt(vectorBC.x * vectorBC.x + vectorBC.y * vectorBC.y)
+        let cosAngle = dotProduct / (magnitudeAB * magnitudeBC)
+        let angle = acos(cosAngle) * 180 / .pi
+        return angle
+    }
 }
 extension KnobView {
     func initViews() {
@@ -273,10 +255,36 @@ extension KnobView {
         self.layer.addSublayer(grooveGradient)
         self.layer.addSublayer(knobOuterReflection)
         self.layer.addSublayer(knobBaseShape)
-        self.layer.addSublayer(rotationBaseShape)
-        rotationBaseShape.addSublayer(whiteIndicationLight)
+        self.addSubview(rotationBaseShape)
+        rotationBaseShape.translatesAutoresizingMaskIntoConstraints = false
+        let padding = self.bounds.width * 11.50 / 100
+        [rotationBaseShape.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+         rotationBaseShape.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
+         rotationBaseShape.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -1 * (padding * 2)),
+         rotationBaseShape.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -1 * (padding * 2))
+        ].forEach({ $0.isActive = true })
+        rotationBaseShape.layer.addSublayer(whiteIndicationLight)
         self.layer.addSublayer(screenShadow)
         self.layer.addSublayer(screenShape)
+        self.addSubview(dummyView)
+        dummyView.translatesAutoresizingMaskIntoConstraints = false
+        [dummyView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+         dummyView.topAnchor.constraint(equalTo: self.topAnchor),
+         dummyView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+         dummyView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
+        ].forEach({ $0.isActive = true })
         
     }
 }
+//let shape = CAShapeLayer()
+//let padding = self.bounds.width * 11.50 / 100
+//let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: self.bounds.width - (padding * 2), height: self.bounds.height - (padding * 2)))
+//shape.path = path.cgPath
+//let gradient = CAGradientLayer.returnGradient(colors: [UIColor.clear.cgColor,
+//                                                       UIColor.clear.cgColor],
+//                                              locations: [0.30, 0.90], maskLayer: shape)
+//gradient.frame = self.bounds
+//gradient.startPoint = CGPoint(x: 0, y: 0)
+//gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+//gradient.type = .radial
+//return gradient
