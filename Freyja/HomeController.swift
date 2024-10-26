@@ -29,8 +29,8 @@ class HomeController: UIViewController {
 }
 extension HomeController: KnobViewDelegate {
     func tappedOnScreen() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.warning)
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
     }
 }
 extension HomeController {
