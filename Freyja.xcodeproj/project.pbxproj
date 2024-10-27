@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */; };
+		011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15F22CCEA0F90069B62B /* KnobViewContract.swift */; };
 		FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */; };
 		FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */; };
 		FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobMotorViewModel.swift; sourceTree = "<group>"; };
+		011B15F22CCEA0F90069B62B /* KnobViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobViewContract.swift; sourceTree = "<group>"; };
 		FF04E0382C9EA7EB00F89E10 /* Freyja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freyja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		011B15F12CCEA0C40069B62B /* KnobView */ = {
+			isa = PBXGroup;
+			children = (
+				FFF1536D2CC57F800023CE51 /* KnobView.swift */,
+				011B15F22CCEA0F90069B62B /* KnobViewContract.swift */,
+				011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */,
+			);
+			path = KnobView;
+			sourceTree = "<group>";
+		};
 		FF04E02F2C9EA7EB00F89E10 = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +171,7 @@
 		FFF153702CC57FD00023CE51 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FFF1536D2CC57F800023CE51 /* KnobView.swift */,
+				011B15F12CCEA0C40069B62B /* KnobView */,
 				FF968AB02CCAB43300B08FD6 /* KnobViewDelegate.swift */,
 			);
 			path = View;
@@ -295,7 +309,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB621F12CC815FB00370355 /* Extensions.swift in Sources */,
+				011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */,
 				FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */,
+				011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */,
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
 				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
 				FF968AB12CCAB43300B08FD6 /* KnobViewDelegate.swift in Sources */,

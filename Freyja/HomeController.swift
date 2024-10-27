@@ -19,28 +19,13 @@ class HomeController: UIViewController {
     }()
     lazy var knobView : KnobView = {
         let view = KnobView()
-        view.delegate = self
+        let viewModel = KnobMotorViewModel(view: view)
+        view.motor = viewModel
         return view
     }()
-    var currentAngleStep: Int = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
-    }
-}
-extension HomeController: KnobViewDelegate {
-    func tappedOnScreen() {
-        let generator = UIImpactFeedbackGenerator(style: .heavy)
-        generator.impactOccurred()
-    }
-    func rotatedToAngle(_ angle: Double) {
-        var angleStep = Int(angle / 30)
-        if angleStep != currentAngleStep {
-            currentAngleStep = angleStep
-            let generator = UIImpactFeedbackGenerator(style: .heavy)
-            generator.impactOccurred()
-            print("BAMMMM")
-        }
     }
 }
 extension HomeController {

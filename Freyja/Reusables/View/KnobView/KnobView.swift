@@ -10,7 +10,14 @@ import UIKit
 import CoreGraphics
 
 class KnobView: UIView {
-    weak var delegate: KnobViewDelegate?
+//MARK: - Decalrations: Logic drivers
+    var parentView: UIView {
+        get {
+            self
+        }
+    }
+    var motor: KnobViewViewToViewModelProtocol?
+//MARK: - Declarations subViews
     lazy var tapGesture: UIPanGestureRecognizer = {
         let tap = UIPanGestureRecognizer(target: self, action: #selector(screenTapped))
         return tap
@@ -134,12 +141,9 @@ class KnobView: UIView {
         let shape = CAShapeLayer()
         let width = self.bounds.width * 2.5 / 100
         let topDistance: CGFloat = 17.3 * self.bounds.width / 100
-        
         let parentViewPadding = self.bounds.width * 11.50 / 100
         let parentViewSize = self.bounds.width - (2 * parentViewPadding)
-        let topDistanceNew: CGFloat = 7.69 * parentViewSize / 100
-        
-        
+        let topDistanceNew: CGFloat = -11.3 * parentViewSize / 100
         let path = UIBezierPath(ovalIn: CGRect(x: (parentViewSize / 2) - width / 2, y: topDistanceNew, width: width, height: width))
         shape.path = path.cgPath
         shape.fillColor = UIColor.white.cgColor
@@ -195,6 +199,7 @@ class KnobView: UIView {
         view.backgroundColor = .clear
         return view
     }()
+//MARK: - Initiation
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -207,6 +212,7 @@ class KnobView: UIView {
         initViews()
         self.addGestureRecognizer(panGesture)
     }
+//MARK: - Selectors for Gestures
     @objc func screenTapped(sender: UITapGestureRecognizer) {
         
     }
@@ -215,35 +221,20 @@ class KnobView: UIView {
         case .changed:
             let location = sender.location(in: self)
             if location.x > leftTopPadding && location.y > leftTopPadding && location.x < rightBottomPadding && location.y < rightBottomPadding {
-                let pointA = location
-                let pointB = CGPoint(x: self.bounds.width / 2, y: self.bounds.width / 2)
-                let pointC = CGPoint(x: self.bounds.width / 2, y: 0)
-                var angle = angleBetweenPoints(pointA: pointA, pointB: pointB, pointC: pointC)
-                if dummyView.frame.contains(location) {
-                    angle = 360 - angle
-                }
-                
-                let rotate = CGAffineTransform(rotationAngle: angle / 180 * .pi)
-                rotationBaseShape.transform = rotate
-                delegate?.rotatedToAngle(angle)
-            } else {
+                motor?.rotatedToAngle(location)
             }
-            
         default:
             break
         }
     }
-    func angleBetweenPoints(pointA: CGPoint, pointB: CGPoint, pointC: CGPoint) -> CGFloat {
-        let vectorAB = CGPoint(x: pointA.x - pointB.x, y: pointA.y - pointB.y)
-        let vectorBC = CGPoint(x: pointC.x - pointB.x, y: pointC.y - pointB.y)
-        let dotProduct = vectorAB.x * vectorBC.x + vectorAB.y * vectorBC.y
-        let magnitudeAB = sqrt(vectorAB.x * vectorAB.x + vectorAB.y * vectorAB.y)
-        let magnitudeBC = sqrt(vectorBC.x * vectorBC.x + vectorBC.y * vectorBC.y)
-        let cosAngle = dotProduct / (magnitudeAB * magnitudeBC)
-        let angle = acos(cosAngle) * 180 / .pi
-        return angle
+}
+//MARK: - KnobViewModelToViewProtocol confirmation
+extension KnobView: KnobViewModelToViewProtocol {
+    func setTransform(transform: CGAffineTransform) {
+        rotationBaseShape.transform = transform
     }
 }
+//MARK: - Initiate Views
 extension KnobView {
     func initViews() {
         self.backgroundColor = .clear
@@ -276,15 +267,3 @@ extension KnobView {
         
     }
 }
-//let shape = CAShapeLayer()
-//let padding = self.bounds.width * 11.50 / 100
-//let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: self.bounds.width - (padding * 2), height: self.bounds.height - (padding * 2)))
-//shape.path = path.cgPath
-//let gradient = CAGradientLayer.returnGradient(colors: [UIColor.clear.cgColor,
-//                                                       UIColor.clear.cgColor],
-//                                              locations: [0.30, 0.90], maskLayer: shape)
-//gradient.frame = self.bounds
-//gradient.startPoint = CGPoint(x: 0, y: 0)
-//gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-//gradient.type = .radial
-//return gradient
