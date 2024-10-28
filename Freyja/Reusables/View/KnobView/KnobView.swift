@@ -143,7 +143,7 @@ class KnobView: UIView {
         let topDistance: CGFloat = 17.3 * self.bounds.width / 100
         let parentViewPadding = self.bounds.width * 11.50 / 100
         let parentViewSize = self.bounds.width - (2 * parentViewPadding)
-        let topDistanceNew: CGFloat = -11.3 * parentViewSize / 100
+        let topDistanceNew: CGFloat = 6.9 * parentViewSize / 100
         let path = UIBezierPath(ovalIn: CGRect(x: (parentViewSize / 2) - width / 2, y: topDistanceNew, width: width, height: width))
         shape.path = path.cgPath
         shape.fillColor = UIColor.white.cgColor
@@ -218,11 +218,17 @@ class KnobView: UIView {
     }
     @objc func panDetected(sender: UIPanGestureRecognizer) {
         switch sender.state {
+        case .began:
+            let location = sender.location(in: self)
+            motor?.rotationStartedAtLocation(location)
         case .changed:
             let location = sender.location(in: self)
             if location.x > leftTopPadding && location.y > leftTopPadding && location.x < rightBottomPadding && location.y < rightBottomPadding {
                 motor?.rotatedToAngle(location)
             }
+        case .ended:
+            let location = sender.location(in: self)
+            motor?.rotationEndedAtAngle(location)
         default:
             break
         }

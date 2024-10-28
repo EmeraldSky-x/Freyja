@@ -8,6 +8,8 @@ import UIKit
 class KnobMotorViewModel: KnobViewViewToViewModelProtocol {
     private weak var view: KnobViewModelToViewProtocol?
     private var currentAngleStep: Int = 0
+    private var rotationStartedAngle: CGFloat = 0
+    private var rotationEndedAtAngle: CGFloat = 0
     init(view: KnobViewModelToViewProtocol) {
         self.view = view
     }
@@ -34,13 +36,36 @@ extension KnobMotorViewModel {
         if dummyView.frame.contains(location) {
             angle = 360 - angle
         }
+        let newAngle = angle - rotationStartedAngle + rotationEndedAtAngle
         let angleStep = Int(angle / 30)
         if angleStep != currentAngleStep {
             currentAngleStep = angleStep
             let generator = UIImpactFeedbackGenerator(style: .heavy)
             generator.impactOccurred()
         }
-        let rotate = CGAffineTransform(rotationAngle: angle / 180 * .pi)
+        let rotate = CGAffineTransform(rotationAngle: newAngle / 180 * .pi)
         view?.setTransform(transform: rotate)
+    }
+    func rotationStartedAtLocation(_ location: CGPoint) {
+        guard let parentView = view?.parentView, let dummyView = view?.dummyView else { return }
+        let pointA = location
+        let pointB = CGPoint(x: parentView.bounds.width / 2, y: parentView.bounds.width / 2)
+        let pointC = CGPoint(x: parentView.bounds.width / 2, y: 0)
+        var angle = angleBetweenPoints(pointA: pointA, pointB: pointB, pointC: pointC)
+        if dummyView.frame.contains(location) {
+            angle = 360 - angle
+        }
+        rotationStartedAngle = angle
+    }
+    func rotationEndedAtAngle(_ location: CGPoint) {
+        guard let parentView = view?.parentView, let dummyView = view?.dummyView else { return }
+        let pointA = location
+        let pointB = CGPoint(x: parentView.bounds.width / 2, y: parentView.bounds.width / 2)
+        let pointC = CGPoint(x: parentView.bounds.width / 2, y: 0)
+        var angle = angleBetweenPoints(pointA: pointA, pointB: pointB, pointC: pointC)
+        if dummyView.frame.contains(location) {
+            angle = 360 - angle
+        }
+        rotationEndedAtAngle = angle - rotationStartedAngle + rotationEndedAtAngle
     }
 }
