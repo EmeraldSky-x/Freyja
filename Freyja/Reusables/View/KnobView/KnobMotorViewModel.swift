@@ -5,7 +5,7 @@
 //  Created by Swathy Sudarsanan on 27/10/24.
 //
 import UIKit
-class KnobMotorViewModel: KnobViewViewToViewModelProtocol {
+class KnobMotorViewModel {
     private weak var view: KnobViewModelToViewProtocol?
     private var currentAngleStep: Int = 0
     private var rotationStartedAngle: CGFloat = 0
@@ -24,7 +24,7 @@ class KnobMotorViewModel: KnobViewViewToViewModelProtocol {
         return angle
     }
 }
-extension KnobMotorViewModel {
+extension KnobMotorViewModel: KnobViewToViewModelProtocol {
     func tappedOnScreen() {
     }
     func rotatedToAngle(_ location: CGPoint) {

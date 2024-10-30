@@ -16,7 +16,7 @@ class KnobView: UIView {
             self
         }
     }
-    var motor: KnobViewViewToViewModelProtocol?
+    var motor: KnobViewToViewModelProtocol?
 //MARK: - Declarations subViews
     lazy var tapGesture: UIPanGestureRecognizer = {
         let tap = UIPanGestureRecognizer(target: self, action: #selector(screenTapped))
