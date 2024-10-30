@@ -8,9 +8,11 @@
 import Foundation
 import UIKit
 
-protocol KnobViewViewToViewModelProtocol: AnyObject {
+protocol KnobViewToViewModelProtocol: AnyObject {
     func tappedOnScreen()
+    func rotationStartedAtLocation(_ location: CGPoint)
     func rotatedToAngle(_ location: CGPoint)
+    func rotationEndedAtAngle(_ location: CGPoint)
 }
 protocol KnobViewModelToViewProtocol: AnyObject {
     var dummyView: UIView { get }
