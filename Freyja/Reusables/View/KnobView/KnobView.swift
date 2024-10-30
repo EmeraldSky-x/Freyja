@@ -223,8 +223,10 @@ class KnobView: UIView {
             motor?.rotationStartedAtLocation(location)
         case .changed:
             let location = sender.location(in: self)
-            if location.x > leftTopPadding && location.y > leftTopPadding && location.x < rightBottomPadding && location.y < rightBottomPadding {
+            if location.x > 0 && location.y > 0 && location.x < self.bounds.height && location.y < self.bounds.width {
                 motor?.rotatedToAngle(location)
+            } else {
+                sender.state = .ended
             }
         case .ended:
             let location = sender.location(in: self)
