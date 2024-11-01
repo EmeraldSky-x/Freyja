@@ -18,4 +18,5 @@ protocol KnobViewModelToViewProtocol: AnyObject {
     var dummyView: UIView { get }
     var parentView: UIView { get }
     func setTransform(transform: CGAffineTransform)
+    func setAnimation()
 }

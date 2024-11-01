@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0108ECF52CD2927000D2A9CE /* KnobMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0108ECF42CD2927000D2A9CE /* KnobMode.swift */; };
 		011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */; };
 		011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15F22CCEA0F90069B62B /* KnobViewContract.swift */; };
 		FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0108ECF42CD2927000D2A9CE /* KnobMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobMode.swift; sourceTree = "<group>"; };
 		011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobMotorViewModel.swift; sourceTree = "<group>"; };
 		011B15F22CCEA0F90069B62B /* KnobViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobViewContract.swift; sourceTree = "<group>"; };
 		FF04E0382C9EA7EB00F89E10 /* Freyja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freyja.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				FFF1536D2CC57F800023CE51 /* KnobView.swift */,
 				011B15F22CCEA0F90069B62B /* KnobViewContract.swift */,
 				011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */,
+				0108ECF42CD2927000D2A9CE /* KnobMode.swift */,
 			);
 			path = KnobView;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			files = (
 				FFB621F12CC815FB00370355 /* Extensions.swift in Sources */,
 				011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */,
+				0108ECF52CD2927000D2A9CE /* KnobMode.swift in Sources */,
 				FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */,
 				011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */,
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,

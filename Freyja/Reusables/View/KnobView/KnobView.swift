@@ -171,7 +171,8 @@ class KnobView: UIView {
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: self.bounds.width - (padding * 2), height: self.bounds.height - (padding * 2)))
         shape.path = path.cgPath
         let gradient = CAGradientLayer.returnGradient(colors: [UIColor.screenShapeColorStart.cgColor,
-                                                               UIColor.screenShapeColorEnd.cgColor],
+                                                               UIColor.screenShapeColorEnd.cgColor,
+                                                               UIColor.white.cgColor],
                                                       locations: [0.40, 1.0], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -198,6 +199,13 @@ class KnobView: UIView {
         let view = UIView()
         view.backgroundColor = .clear
         return view
+    }()
+    lazy var screenText: UILabel = {
+        let label = UILabel()
+        label.text = "Knob"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        return label
     }()
 //MARK: - Initiation
     override init(frame: CGRect) {
@@ -241,6 +249,17 @@ extension KnobView: KnobViewModelToViewProtocol {
     func setTransform(transform: CGAffineTransform) {
         rotationBaseShape.transform = transform
     }
+    func setAnimation() {
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.fromValue = 0
+        rotationAnimation.toValue = CGFloat.pi * (2.0 * 10)
+        rotationAnimation.duration = 1.0
+        rotationAnimation.isCumulative = true
+        rotationAnimation.isRemovedOnCompletion = false
+        rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+//        rotationAnimation.repeatCount = Float.greatestFiniteMagnitude
+        rotationBaseShape.layer.add(rotationAnimation, forKey: "rotationAnimation")
+    }
 }
 //MARK: - Initiate Views
 extension KnobView {
@@ -272,6 +291,10 @@ extension KnobView {
          dummyView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
          dummyView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
         ].forEach({ $0.isActive = true })
-        
+        self.addSubview(screenText)
+        screenText.translatesAutoresizingMaskIntoConstraints = false
+        [screenText.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+         screenText.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ].forEach({ $0.isActive = true })
     }
 }
