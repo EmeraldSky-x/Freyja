@@ -10,7 +10,7 @@ class KnobMotorViewModel {
     private var currentAngleStep: Int = 0
     private var rotationStartedAngle: CGFloat = 0
     private var rotationEndedAtAngle: CGFloat = 0
-    private var mode: KnobMode = .slingShot
+    private var mode: KnobMode = .knob
     init(view: KnobViewModelToViewProtocol) {
         self.view = view
     }
@@ -57,13 +57,13 @@ class KnobMotorViewModel {
             let generator = UIImpactFeedbackGenerator(style: .heavy)
             generator.impactOccurred()
             break
-        default:
-            break
         }
     }
 }
 extension KnobMotorViewModel: KnobViewToViewModelProtocol {
     func tappedOnScreen() {
+        mode = mode == .knob ? .slingShot : .knob
+        view?.setScreenText(string: mode.rawValue)
     }
     func rotatedToAngle(_ location: CGPoint) {
         guard let angle = getAngle(from: location) else { return }
@@ -79,8 +79,6 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
             print(newAngle)
             let rotate = CGAffineTransform(rotationAngle: newAngle / 180 * .pi)
             view?.setTransform(transform: rotate)
-            break
-        default:
             break
         }
     }

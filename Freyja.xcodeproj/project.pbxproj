@@ -94,8 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				FFF1536D2CC57F800023CE51 /* KnobView.swift */,
-				011B15F22CCEA0F90069B62B /* KnobViewContract.swift */,
 				011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */,
+				011B15F22CCEA0F90069B62B /* KnobViewContract.swift */,
 				0108ECF42CD2927000D2A9CE /* KnobMode.swift */,
 			);
 			path = KnobView;
