@@ -22,6 +22,6 @@ extension UIColor {
     static let knobBaseShapeColorEnd = UIColor(red: 0.16, green: 0.17, blue: 0.20, alpha: 1.00)
     static let knobOuterReflectionColorStart = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.20)
     static let knobOuterReflectionColorEnd = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.40)
-    static let screenShapeColorStart = UIColor(red: 0.10, green: 0.11, blue: 0.14, alpha: 1.00)
-    static let screenShapeColorEnd = UIColor.black
+    static let screenShapeColorStart = UIColor(red: 0.21, green: 0.70, blue: 0.58, alpha: 1.00)
+    static let screenShapeColorEnd = UIColor(red: 0.78, green: 0.35, blue: 0.68, alpha: 1.00)
 }

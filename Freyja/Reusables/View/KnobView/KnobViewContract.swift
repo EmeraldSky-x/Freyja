@@ -17,5 +17,8 @@ protocol KnobViewToViewModelProtocol: AnyObject {
 protocol KnobViewModelToViewProtocol: AnyObject {
     var dummyView: UIView { get }
     var parentView: UIView { get }
+    func endPanGestureCapture()
     func setTransform(transform: CGAffineTransform)
+    func setAnimation(angleInRadian: CGFloat)
+    func cancelAllAnimations()
 }
