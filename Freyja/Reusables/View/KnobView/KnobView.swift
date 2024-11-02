@@ -249,16 +249,22 @@ extension KnobView: KnobViewModelToViewProtocol {
     func setTransform(transform: CGAffineTransform) {
         rotationBaseShape.transform = transform
     }
-    func setAnimation() {
+    func setAnimation(angleInRadian: CGFloat)  {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.fromValue = 0
+        rotationAnimation.fromValue = angleInRadian
         rotationAnimation.toValue = CGFloat.pi * (2.0 * 10)
-        rotationAnimation.duration = 1.0
+        rotationAnimation.duration = 10.0
         rotationAnimation.isCumulative = true
-        rotationAnimation.isRemovedOnCompletion = false
+        rotationAnimation.isRemovedOnCompletion = true
         rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-//        rotationAnimation.repeatCount = Float.greatestFiniteMagnitude
         rotationBaseShape.layer.add(rotationAnimation, forKey: "rotationAnimation")
+        rotationBaseShape.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0)
+    }
+    func endPanGestureCapture() {
+    }
+    func cancelAllAnimations() {
+        rotationBaseShape.layer.removeAllAnimations()
+        rotationBaseShape.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0)
     }
 }
 //MARK: - Initiate Views

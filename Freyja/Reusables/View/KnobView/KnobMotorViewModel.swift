@@ -44,11 +44,21 @@ class KnobMotorViewModel {
     }
     //MARK: - UIImpactFeedback generator
     private func addImpactFeedback(angle: CGFloat) {
-        let angleStep = Int(angle / 30)
-        if angleStep != currentAngleStep {
-            currentAngleStep = angleStep
+        switch mode {
+        case .knob:
+            let angleStep = Int(angle / 30)
+            if angleStep != currentAngleStep {
+                currentAngleStep = angleStep
+                let generator = UIImpactFeedbackGenerator(style: .heavy)
+                generator.impactOccurred()
+            }
+            break
+        case .slingShot:
             let generator = UIImpactFeedbackGenerator(style: .heavy)
             generator.impactOccurred()
+            break
+        default:
+            break
         }
     }
 }
@@ -65,7 +75,7 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
             view?.setTransform(transform: rotate)
             break
         case .slingShot:
-            let newAngle = max(angle, 300)
+            let newAngle = angle - rotationStartedAngle
             print(newAngle)
             let rotate = CGAffineTransform(rotationAngle: newAngle / 180 * .pi)
             view?.setTransform(transform: rotate)
@@ -77,13 +87,22 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
     func rotationStartedAtLocation(_ location: CGPoint) {
         guard let angle = getAngle(from: location) else { return }
         rotationStartedAngle = angle
+        switch mode {
+        case .slingShot:
+            view?.cancelAllAnimations()
+            break
+        default:
+            break
+        }
     }
     func rotationEndedAtAngle(_ location: CGPoint) {
         guard let angle = getAngle(from: location) else { return }
         rotationEndedAtAngle = angle - rotationStartedAngle + rotationEndedAtAngle
         switch mode {
         case .slingShot:
-            view?.setAnimation()
+            let radians = rotationEndedAtAngle * .pi / 180
+            view?.setAnimation(angleInRadian: radians)
+            addImpactFeedback(angle: 0)
             break
         default:
             break
