@@ -21,4 +21,5 @@ protocol KnobViewModelToViewProtocol: AnyObject {
     func setTransform(transform: CGAffineTransform)
     func setAnimation(angleInRadian: CGFloat)
     func cancelAllAnimations()
+    func setScreenText(string: String)
 }

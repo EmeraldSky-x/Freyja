@@ -7,8 +7,7 @@
 
 import Foundation
 
-enum KnobMode {
-    case knob
-    case slingShot
-    case aura
+enum KnobMode: String, CaseIterable {
+    case knob = "Knob"
+    case slingShot = "Slingshot"
 }

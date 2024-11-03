@@ -20,7 +20,6 @@
 		FF04E05D2C9EA7EC00F89E10 /* FreyjaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */; };
 		FF04E05F2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */; };
 		FF968AAD2CCA5A0800B08FD6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968AAC2CCA5A0800B08FD6 /* Constants.swift */; };
-		FF968AB12CCAB43300B08FD6 /* KnobViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968AB02CCAB43300B08FD6 /* KnobViewDelegate.swift */; };
 		FFB621F12CC815FB00370355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB621F02CC815FB00370355 /* Extensions.swift */; };
 		FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1536D2CC57F800023CE51 /* KnobView.swift */; };
 /* End PBXBuildFile section */
@@ -60,7 +59,6 @@
 		FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITests.swift; sourceTree = "<group>"; };
 		FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF968AAC2CCA5A0800B08FD6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		FF968AB02CCAB43300B08FD6 /* KnobViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobViewDelegate.swift; sourceTree = "<group>"; };
 		FFB621F02CC815FB00370355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FFF1536D2CC57F800023CE51 /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,8 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				FFF1536D2CC57F800023CE51 /* KnobView.swift */,
-				011B15F22CCEA0F90069B62B /* KnobViewContract.swift */,
 				011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */,
+				011B15F22CCEA0F90069B62B /* KnobViewContract.swift */,
 				0108ECF42CD2927000D2A9CE /* KnobMode.swift */,
 			);
 			path = KnobView;
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				011B15F12CCEA0C40069B62B /* KnobView */,
-				FF968AB02CCAB43300B08FD6 /* KnobViewDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,7 +315,6 @@
 				011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */,
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
 				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
-				FF968AB12CCAB43300B08FD6 /* KnobViewDelegate.swift in Sources */,
 				FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */,
 				FF968AAD2CCA5A0800B08FD6 /* Constants.swift in Sources */,
 			);
