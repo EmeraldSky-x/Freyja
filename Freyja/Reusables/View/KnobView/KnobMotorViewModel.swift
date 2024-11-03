@@ -86,10 +86,11 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
         guard let angle = getAngle(from: location) else { return }
         rotationStartedAngle = angle
         switch mode {
+        case .knob:
+//            view?.cancelAllAnimations()
+            break
         case .slingShot:
             view?.cancelAllAnimations()
-            break
-        default:
             break
         }
     }

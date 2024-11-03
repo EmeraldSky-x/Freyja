@@ -110,7 +110,7 @@ class KnobView: UIView {
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: width, height: width))
         shape.path = path.cgPath
         shape.fillColor = UIColor.white.cgColor
-        shape.shadowColor = UIColor(red: 0.05, green: 0.44, blue: 0.02, alpha: 1.00).cgColor
+        shape.shadowColor = UIColor(red: 0.27, green: 0.84, blue: 0.17, alpha: 1.00).cgColor
         shape.shadowRadius = 10
         shape.shadowOpacity = 1.0
         shape.shadowOffset = CGSize(width: 1, height: 1)
@@ -123,8 +123,8 @@ class KnobView: UIView {
         let padding = self.bounds.width * 8.50 / 100
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: width, height: width))
         shape.path = path.cgPath
-        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 0.05, green: 0.44, blue: 0.02, alpha: 1.00).cgColor,
-                                                               UIColor(red: 0.05, green: 0.44, blue: 0.02, alpha: 1.00).cgColor],
+        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 0.27, green: 0.84, blue: 0.17, alpha: 1.00).cgColor,
+                                                               UIColor(red: 0.27, green: 0.84, blue: 0.17, alpha: 1.00).cgColor],
                                                       locations: [0.60, 1.0], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -165,6 +165,11 @@ class KnobView: UIView {
         let view = UIView()
         view.backgroundColor = .clear
         return view
+    }()
+    lazy var screenView: UIView = {
+        let screen = UIView()
+        screen.backgroundColor = .clear
+        return screen
     }()
     lazy var whiteIndicationLight: CAShapeLayer = {
         let shape = CAShapeLayer()
@@ -249,7 +254,7 @@ class KnobView: UIView {
         super.layoutSubviews()
         initViews()
         self.addGestureRecognizer(panGesture)
-        rotationBaseShape.addGestureRecognizer(tapGesture)
+        screenView.addGestureRecognizer(tapGesture)
     }
 //MARK: - Selectors for Gestures
     @objc func screenTapped(sender: UITapGestureRecognizer) {
@@ -297,7 +302,7 @@ extension KnobView: KnobViewModelToViewProtocol {
         opacity.duration = 0.3
         opacity.autoreverses = true
         grooveLight.add(opacity, forKey: nil)
-        grooveLightAura.add(opacity, forKey: nil)
+//        grooveLightAura.add(opacity, forKey: nil)
     }
     
     func setTransform(transform: CGAffineTransform) {
@@ -352,6 +357,14 @@ extension KnobView {
          dummyView.topAnchor.constraint(equalTo: self.topAnchor),
          dummyView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
          dummyView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
+        ].forEach({ $0.isActive = true })
+        self.addSubview(screenView)
+        let screenPadding = self.bounds.width * 26.01 / 100
+        screenView.translatesAutoresizingMaskIntoConstraints = false
+        [screenView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
+         screenView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
+         screenView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -1 * (screenPadding * 2 )),
+         screenView.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -1 * (screenPadding * 2))
         ].forEach({ $0.isActive = true })
         self.addSubview(screenText)
         screenText.translatesAutoresizingMaskIntoConstraints = false
