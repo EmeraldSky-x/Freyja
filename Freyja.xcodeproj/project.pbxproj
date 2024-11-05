@@ -12,7 +12,10 @@
 		011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15F22CCEA0F90069B62B /* KnobViewContract.swift */; };
 		01B8B6A02CD747200026AF5F /* alienleague.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B8B69F2CD747200026AF5F /* alienleague.ttf */; };
 		01B8B6A22CD748210026AF5F /* alienleaguebold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B8B6A12CD748210026AF5F /* alienleaguebold.ttf */; };
-		01B8B6A62CD748D40026AF5F /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B6A52CD748D40026AF5F /* Conversation.swift */; };
+		01B8B6A62CD748D40026AF5F /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B6A52CD748D40026AF5F /* ConversationManager.swift */; };
+		01E0F3062CDA67AC0029F24D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3052CDA67AC0029F24D /* Node.swift */; };
+		01E0F3082CDA67EF0029F24D /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3072CDA67EF0029F24D /* ConversationModel.swift */; };
+		01E0F30A2CDA680F0029F24D /* ConversationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3092CDA680F0029F24D /* ConversationContract.swift */; };
 		FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */; };
 		FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */; };
 		FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */; };
@@ -50,7 +53,10 @@
 		011B15F22CCEA0F90069B62B /* KnobViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobViewContract.swift; sourceTree = "<group>"; };
 		01B8B69F2CD747200026AF5F /* alienleague.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alienleague.ttf; sourceTree = "<group>"; };
 		01B8B6A12CD748210026AF5F /* alienleaguebold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alienleaguebold.ttf; sourceTree = "<group>"; };
-		01B8B6A52CD748D40026AF5F /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		01B8B6A52CD748D40026AF5F /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		01E0F3052CDA67AC0029F24D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		01E0F3072CDA67EF0029F24D /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		01E0F3092CDA680F0029F24D /* ConversationContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationContract.swift; sourceTree = "<group>"; };
 		FF04E0382C9EA7EB00F89E10 /* Freyja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freyja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +120,25 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		01E0F3032CDA678D0029F24D /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				01E0F3092CDA680F0029F24D /* ConversationContract.swift */,
+				01B8B6A52CD748D40026AF5F /* ConversationManager.swift */,
+				01E0F3042CDA67A30029F24D /* Models */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		01E0F3042CDA67A30029F24D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				01E0F3052CDA67AC0029F24D /* Node.swift */,
+				01E0F3072CDA67EF0029F24D /* ConversationModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FF04E02F2C9EA7EB00F89E10 = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +165,7 @@
 				FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */,
 				FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */,
 				FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */,
-				01B8B6A52CD748D40026AF5F /* Conversation.swift */,
+				01E0F3032CDA678D0029F24D /* Conversation */,
 				01B8B6A42CD748920026AF5F /* Fonts */,
 				FFB621EF2CC815E100370355 /* Helpers */,
 				FFF1536F2CC57FAF0023CE51 /* Reusables */,
@@ -330,12 +355,15 @@
 				FFB621F12CC815FB00370355 /* Extensions.swift in Sources */,
 				011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */,
 				0108ECF52CD2927000D2A9CE /* KnobMode.swift in Sources */,
+				01E0F3062CDA67AC0029F24D /* Node.swift in Sources */,
 				FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */,
+				01E0F30A2CDA680F0029F24D /* ConversationContract.swift in Sources */,
 				011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */,
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
 				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
 				FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */,
-				01B8B6A62CD748D40026AF5F /* Conversation.swift in Sources */,
+				01B8B6A62CD748D40026AF5F /* ConversationManager.swift in Sources */,
+				01E0F3082CDA67EF0029F24D /* ConversationModel.swift in Sources */,
 				FF968AAD2CCA5A0800B08FD6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

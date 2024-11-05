@@ -18,6 +18,11 @@ class KnobView: UIView {
         }
     }
     var motor: KnobViewToViewModelProtocol?
+    var conversationManager: ConversationManager? = {
+        let manager = ConversationManager()
+        return manager
+    }()
+    var cancellableSet: Set<AnyCancellable> = .init()
 //MARK: - Declarations subViews
     lazy var tapGesture: UITapGestureRecognizer = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
@@ -244,11 +249,6 @@ class KnobView: UIView {
         label.textAlignment = .center
         return label
     }()
-    var conversationManager: ConversationManager? = {
-        let manager = ConversationManager()
-        return manager
-    }()
-    var cancellableSet: Set<AnyCancellable> = .init()
     var shouldInitiateViews = true
 //MARK: - Initiation
     override init(frame: CGRect) {
@@ -276,8 +276,10 @@ class KnobView: UIView {
 //MARK: - Selectors for Gestures
     @objc func screenTapped(sender: UITapGestureRecognizer) {
         motor?.tappedOnScreen()
+        conversationManager?.appActive()
     }
     @objc func panDetected(sender: UIPanGestureRecognizer) {
+        conversationManager?.appActive()
         switch sender.state {
         case .began:
             let location = sender.location(in: self)
