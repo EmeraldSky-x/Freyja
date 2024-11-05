@@ -10,6 +10,9 @@
 		0108ECF52CD2927000D2A9CE /* KnobMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0108ECF42CD2927000D2A9CE /* KnobMode.swift */; };
 		011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */; };
 		011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15F22CCEA0F90069B62B /* KnobViewContract.swift */; };
+		01B8B6A02CD747200026AF5F /* alienleague.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B8B69F2CD747200026AF5F /* alienleague.ttf */; };
+		01B8B6A22CD748210026AF5F /* alienleaguebold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B8B6A12CD748210026AF5F /* alienleaguebold.ttf */; };
+		01B8B6A62CD748D40026AF5F /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B6A52CD748D40026AF5F /* Conversation.swift */; };
 		FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */; };
 		FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */; };
 		FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */; };
@@ -45,6 +48,9 @@
 		0108ECF42CD2927000D2A9CE /* KnobMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobMode.swift; sourceTree = "<group>"; };
 		011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobMotorViewModel.swift; sourceTree = "<group>"; };
 		011B15F22CCEA0F90069B62B /* KnobViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobViewContract.swift; sourceTree = "<group>"; };
+		01B8B69F2CD747200026AF5F /* alienleague.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alienleague.ttf; sourceTree = "<group>"; };
+		01B8B6A12CD748210026AF5F /* alienleaguebold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alienleaguebold.ttf; sourceTree = "<group>"; };
+		01B8B6A52CD748D40026AF5F /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		FF04E0382C9EA7EB00F89E10 /* Freyja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freyja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +105,15 @@
 			path = KnobView;
 			sourceTree = "<group>";
 		};
+		01B8B6A42CD748920026AF5F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				01B8B69F2CD747200026AF5F /* alienleague.ttf */,
+				01B8B6A12CD748210026AF5F /* alienleaguebold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		FF04E02F2C9EA7EB00F89E10 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +140,8 @@
 				FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */,
 				FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */,
 				FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */,
+				01B8B6A52CD748D40026AF5F /* Conversation.swift */,
+				01B8B6A42CD748920026AF5F /* Fonts */,
 				FFB621EF2CC815E100370355 /* Helpers */,
 				FFF1536F2CC57FAF0023CE51 /* Reusables */,
 				FF04E0412C9EA7EB00F89E10 /* Main.storyboard */,
@@ -283,7 +300,9 @@
 			files = (
 				FF04E0452C9EA7EC00F89E10 /* Assets.xcassets in Resources */,
 				FF04E0482C9EA7EC00F89E10 /* Base in Resources */,
+				01B8B6A22CD748210026AF5F /* alienleaguebold.ttf in Resources */,
 				FF04E0432C9EA7EB00F89E10 /* Base in Resources */,
+				01B8B6A02CD747200026AF5F /* alienleague.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +335,7 @@
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
 				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
 				FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */,
+				01B8B6A62CD748D40026AF5F /* Conversation.swift in Sources */,
 				FF968AAD2CCA5A0800B08FD6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
