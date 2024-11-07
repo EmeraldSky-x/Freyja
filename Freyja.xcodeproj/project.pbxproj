@@ -26,6 +26,8 @@
 		FF04E05D2C9EA7EC00F89E10 /* FreyjaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */; };
 		FF04E05F2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */; };
 		FF968AAD2CCA5A0800B08FD6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968AAC2CCA5A0800B08FD6 /* Constants.swift */; };
+		FFA1332F2CD8794F0055DCCF /* KnobView+KnobViewModeToViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA1332E2CD8794F0055DCCF /* KnobView+KnobViewModeToViewProtocol.swift */; };
+		FFA133312CD879F80055DCCF /* KnobView+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA133302CD879F80055DCCF /* KnobView+UI.swift */; };
 		FFB621F12CC815FB00370355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB621F02CC815FB00370355 /* Extensions.swift */; };
 		FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1536D2CC57F800023CE51 /* KnobView.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +73,8 @@
 		FF04E05C2C9EA7EC00F89E10 /* FreyjaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITests.swift; sourceTree = "<group>"; };
 		FF04E05E2C9EA7EC00F89E10 /* FreyjaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreyjaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF968AAC2CCA5A0800B08FD6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FFA1332E2CD8794F0055DCCF /* KnobView+KnobViewModeToViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnobView+KnobViewModeToViewProtocol.swift"; sourceTree = "<group>"; };
+		FFA133302CD879F80055DCCF /* KnobView+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnobView+UI.swift"; sourceTree = "<group>"; };
 		FFB621F02CC815FB00370355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FFF1536D2CC57F800023CE51 /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +109,8 @@
 			children = (
 				FFF1536D2CC57F800023CE51 /* KnobView.swift */,
 				011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */,
+				FFA1332E2CD8794F0055DCCF /* KnobView+KnobViewModeToViewProtocol.swift */,
+				FFA133302CD879F80055DCCF /* KnobView+UI.swift */,
 				011B15F22CCEA0F90069B62B /* KnobViewContract.swift */,
 				0108ECF42CD2927000D2A9CE /* KnobMode.swift */,
 			);
@@ -359,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA1332F2CD8794F0055DCCF /* KnobView+KnobViewModeToViewProtocol.swift in Sources */,
 				FFB621F12CC815FB00370355 /* Extensions.swift in Sources */,
 				011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */,
 				01E2C37D2CDD01E000775B79 /* HomeModuleBuilder.swift in Sources */,
@@ -368,6 +375,7 @@
 				01E0F30A2CDA680F0029F24D /* ConversationContract.swift in Sources */,
 				011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */,
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
+				FFA133312CD879F80055DCCF /* KnobView+UI.swift in Sources */,
 				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
 				FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */,
 				01B8B6A62CD748D40026AF5F /* ConversationManager.swift in Sources */,
@@ -545,14 +553,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = TYCWQ2TQB6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Freyja/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -573,14 +580,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = TYCWQ2TQB6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Freyja/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

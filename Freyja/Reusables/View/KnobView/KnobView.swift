@@ -125,8 +125,8 @@ class KnobView: UIView {
         let padding = self.bounds.width * 8.50 / 100
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: width, height: width))
         shape.path = path.cgPath
-        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 0.27, green: 0.84, blue: 0.17, alpha: 1.00).cgColor,
-                                                               UIColor(red: 0.27, green: 0.84, blue: 0.17, alpha: 1.00).cgColor],
+        let gradient = CAGradientLayer.returnGradient(colors: [UIColor(red: 0.50, green: 1.00, blue: 0.83, alpha: 1.00).cgColor,
+                                                               UIColor(red: 0.50, green: 1.00, blue: 0.83, alpha: 1.00).cgColor],
                                                       locations: [0.60, 1.0], maskLayer: shape)
         gradient.frame = self.bounds
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -250,7 +250,6 @@ class KnobView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -292,96 +291,5 @@ class KnobView: UIView {
         }
     }
 }
-//MARK: - KnobViewModelToViewProtocol confirmation
-extension KnobView: KnobViewModelToViewProtocol {
-    func setScreenText(string: String) {
-        self.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            guard let unwrappedSelf = self else { return }
-            unwrappedSelf.screenText.alpha = 0
-        }) { [weak self] _ in
-            guard let unwrappedSelf = self else { return }
-            unwrappedSelf.screenText.text = string
-            UIView.animate(withDuration: 0.2) { [weak self] in
-                guard let unwrappedSelf = self else { return }
-                unwrappedSelf.screenText.alpha = 1
-                unwrappedSelf.isUserInteractionEnabled = true
-            }
-        }
-        let opacity = CABasicAnimation(keyPath: "opacity")
-        opacity.fromValue = 0
-        opacity.toValue = 1
-        opacity.duration = 0.3
-        opacity.autoreverses = true
-        grooveLight.add(opacity, forKey: nil)
-//        grooveLightAura.add(opacity, forKey: nil)
-    }
-    
-    func setTransform(transform: CGAffineTransform) {
-        rotationBaseShape.transform = transform
-    }
-    func setAnimation(angleInRadian: CGFloat)  {
-        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.fromValue = angleInRadian
-        rotationAnimation.toValue = CGFloat.pi * (2.0 * 10)
-        rotationAnimation.duration = 10.0
-        rotationAnimation.isCumulative = true
-        rotationAnimation.isRemovedOnCompletion = true
-        rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-        rotationBaseShape.layer.add(rotationAnimation, forKey: "rotationAnimation")
-        rotationBaseShape.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0)
-    }
-    func endPanGestureCapture() {
-    }
-    func cancelAllAnimations() {
-        rotationBaseShape.layer.removeAllAnimations()
-        rotationBaseShape.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0)
-    }
-}
-//MARK: - Initiate Views
-extension KnobView {
-    func initViews() {
-        self.backgroundColor = .clear
-        self.layer.addSublayer(outerRimLightShadow)
-        self.layer.addSublayer(outerRimDarkShadow)
-        self.layer.addSublayer(outerRimShape)
-        self.layer.addSublayer(outerRimInnerReflection)
-        self.layer.addSublayer(grooveShape)
-        self.layer.addSublayer(grooveGradient)
-        self.layer.addSublayer(grooveLightAura)
-        self.layer.addSublayer(grooveLight)
-        self.layer.addSublayer(knobOuterReflection)
-        self.layer.addSublayer(knobBaseShape)
-        self.addSubview(rotationBaseShape)
-        rotationBaseShape.translatesAutoresizingMaskIntoConstraints = false
-        let padding = self.bounds.width * 11.50 / 100
-        [rotationBaseShape.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-         rotationBaseShape.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
-         rotationBaseShape.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -1 * (padding * 2)),
-         rotationBaseShape.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -1 * (padding * 2))
-        ].forEach({ $0.isActive = true })
-        rotationBaseShape.layer.addSublayer(whiteIndicationLight)
-        self.layer.addSublayer(screenShadow)
-        self.layer.addSublayer(screenShape)
-        self.addSubview(dummyView)
-        dummyView.translatesAutoresizingMaskIntoConstraints = false
-        [dummyView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-         dummyView.topAnchor.constraint(equalTo: self.topAnchor),
-         dummyView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-         dummyView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
-        ].forEach({ $0.isActive = true })
-        self.addSubview(screenView)
-        let screenPadding = self.bounds.width * 26.01 / 100
-        screenView.translatesAutoresizingMaskIntoConstraints = false
-        [screenView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
-         screenView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
-         screenView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -1 * (screenPadding * 2 )),
-         screenView.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -1 * (screenPadding * 2))
-        ].forEach({ $0.isActive = true })
-        self.addSubview(screenText)
-        screenText.translatesAutoresizingMaskIntoConstraints = false
-        [screenText.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-         screenText.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-        ].forEach({ $0.isActive = true })
-    }
-}
+
+
