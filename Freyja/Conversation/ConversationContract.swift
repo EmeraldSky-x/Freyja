@@ -8,7 +8,8 @@
 import Foundation
 import Combine
 protocol ConversationManagerProtocol: AnyObject {
-    var currentMessagePublisher: CurrentValueSubject<ConversationMessages, Never> { get }
+    var currentMessagePublisher: CurrentValueSubject<String, Never> { get }
     func appOpened()
     func appIdle()
+    func appActive()
 }

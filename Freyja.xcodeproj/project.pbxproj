@@ -16,10 +16,10 @@
 		01E0F3062CDA67AC0029F24D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3052CDA67AC0029F24D /* Node.swift */; };
 		01E0F3082CDA67EF0029F24D /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3072CDA67EF0029F24D /* ConversationModel.swift */; };
 		01E0F30A2CDA680F0029F24D /* ConversationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3092CDA680F0029F24D /* ConversationContract.swift */; };
+		01E2C37D2CDD01E000775B79 /* HomeModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E2C37C2CDD01E000775B79 /* HomeModuleBuilder.swift */; };
 		FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */; };
 		FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */; };
 		FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */; };
-		FF04E0432C9EA7EB00F89E10 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF04E0422C9EA7EB00F89E10 /* Base */; };
 		FF04E0452C9EA7EC00F89E10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF04E0442C9EA7EC00F89E10 /* Assets.xcassets */; };
 		FF04E0482C9EA7EC00F89E10 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FF04E0472C9EA7EC00F89E10 /* Base */; };
 		FF04E0532C9EA7EC00F89E10 /* FreyjaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E0522C9EA7EC00F89E10 /* FreyjaTests.swift */; };
@@ -57,11 +57,11 @@
 		01E0F3052CDA67AC0029F24D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		01E0F3072CDA67EF0029F24D /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		01E0F3092CDA680F0029F24D /* ConversationContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationContract.swift; sourceTree = "<group>"; };
+		01E2C37C2CDD01E000775B79 /* HomeModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModuleBuilder.swift; sourceTree = "<group>"; };
 		FF04E0382C9EA7EB00F89E10 /* Freyja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freyja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		FF04E0422C9EA7EB00F89E10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF04E0442C9EA7EC00F89E10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF04E0472C9EA7EC00F89E10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF04E0492C9EA7EC00F89E10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +139,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		01E2C37B2CDD01BF00775B79 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */,
+				01E2C37C2CDD01E000775B79 /* HomeModuleBuilder.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
 		FF04E02F2C9EA7EB00F89E10 = {
 			isa = PBXGroup;
 			children = (
@@ -164,12 +173,11 @@
 			children = (
 				FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */,
 				FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */,
-				FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */,
+				01E2C37B2CDD01BF00775B79 /* Module */,
 				01E0F3032CDA678D0029F24D /* Conversation */,
-				01B8B6A42CD748920026AF5F /* Fonts */,
 				FFB621EF2CC815E100370355 /* Helpers */,
 				FFF1536F2CC57FAF0023CE51 /* Reusables */,
-				FF04E0412C9EA7EB00F89E10 /* Main.storyboard */,
+				01B8B6A42CD748920026AF5F /* Fonts */,
 				FF04E0442C9EA7EC00F89E10 /* Assets.xcassets */,
 				FF04E0462C9EA7EC00F89E10 /* LaunchScreen.storyboard */,
 				FF04E0492C9EA7EC00F89E10 /* Info.plist */,
@@ -326,7 +334,6 @@
 				FF04E0452C9EA7EC00F89E10 /* Assets.xcassets in Resources */,
 				FF04E0482C9EA7EC00F89E10 /* Base in Resources */,
 				01B8B6A22CD748210026AF5F /* alienleaguebold.ttf in Resources */,
-				FF04E0432C9EA7EB00F89E10 /* Base in Resources */,
 				01B8B6A02CD747200026AF5F /* alienleague.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +361,7 @@
 			files = (
 				FFB621F12CC815FB00370355 /* Extensions.swift in Sources */,
 				011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */,
+				01E2C37D2CDD01E000775B79 /* HomeModuleBuilder.swift in Sources */,
 				0108ECF52CD2927000D2A9CE /* KnobMode.swift in Sources */,
 				01E0F3062CDA67AC0029F24D /* Node.swift in Sources */,
 				FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */,
@@ -401,14 +409,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FF04E0412C9EA7EB00F89E10 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF04E0422C9EA7EB00F89E10 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FF04E0462C9EA7EC00F89E10 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -551,7 +551,6 @@
 				INFOPLIST_FILE = Freyja/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -580,7 +579,6 @@
 				INFOPLIST_FILE = Freyja/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

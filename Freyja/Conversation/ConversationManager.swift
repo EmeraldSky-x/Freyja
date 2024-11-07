@@ -9,7 +9,6 @@ import Foundation
 import Combine
 class ConversationManager: ConversationManagerProtocol {
     var starterMessages: Node = Node.createLinkedList([.welcome, .name, .instructions])
-    
     var idleConverationTree: ConversationTree? = {
         let conversations: [Node] = [
             Node.createLinkedList([.instructions, .futureModes]),
@@ -18,12 +17,8 @@ class ConversationManager: ConversationManagerProtocol {
         let tree = ConversationTree(root: RootNode(branches: conversations))
         return tree
     }()
-    
-    
-    
-    
     var futureMessage: ConversationMessages = .instructions
-    var currentMessagePublisher: CurrentValueSubject<ConversationMessages, Never> = .init(.welcome)
+    var currentMessagePublisher: CurrentValueSubject<String, Never> = .init(ConversationMessages.welcome.rawValue)
     var currentMode: ConversationMode = .start
     private var timer: Timer?
     private var idleTimer: Timer?
@@ -32,7 +27,6 @@ class ConversationManager: ConversationManagerProtocol {
     }
     func appIdle() {
         timer?.invalidate()
-        initTimer()
     }
     func appActive() {
         timer?.invalidate()
@@ -46,34 +40,33 @@ class ConversationManager: ConversationManagerProtocol {
         timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
     }
     private func initIdleTimer() {
-        idleTimer = Timer.scheduledTimer(timeInterval: 16, target: self, selector: #selector(idleTimerTriggered), userInfo: nil, repeats: true)
+        currentMode = .idle
+        idleTimer = Timer.scheduledTimer(timeInterval: 16, target: self, selector: #selector(idleTimerTriggered), userInfo: nil, repeats: false)
     }
     @objc func idleTimerTriggered() {
         initTimer()
     }
     @objc func tick() {
-        print(currentMode)
         switch currentMode {
         case .start:
             if let next = starterMessages.next {
                 starterMessages = next
                 let message = starterMessages.value
-                currentMessagePublisher.send(message)
+                currentMessagePublisher.send(message.rawValue)
             } else {
                 currentMode = .idle
-                currentMessagePublisher.send(futureMessage)
+                currentMessagePublisher.send(futureMessage.rawValue)
             }
         case .idle:
             if let currentNode = idleConverationTree?.currentNode {
-                currentMessagePublisher.send(currentNode.value)
+                currentMessagePublisher.send(currentNode.value.rawValue)
                 idleConverationTree?.currentNode = idleConverationTree?.currentNode?.next
             } else {
                 idleConverationTree?.startNewConversation()
                 if let currentNode = idleConverationTree?.currentNode {
-                    currentMessagePublisher.send(currentNode.value)
+                    currentMessagePublisher.send(currentNode.value.rawValue)
                 }
             }
-            
         }
     }
 }
