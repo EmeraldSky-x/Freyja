@@ -17,9 +17,10 @@ class HomeController: UIViewController {
         gradient.frame = view.bounds
         return gradient
     }()
+    var conversationManager: ConversationManager?
     lazy var knobView : KnobView = {
         let view = KnobView()
-        let viewModel = KnobMotorViewModel(view: view)
+        let viewModel = KnobMotorViewModel(view: view, conversationManager: conversationManager)
         view.motor = viewModel
         return view
     }()

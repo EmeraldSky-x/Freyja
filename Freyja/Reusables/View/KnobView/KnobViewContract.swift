@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol KnobViewToViewModelProtocol: AnyObject {
+    var conversationManager: ConversationManagerProtocol? { get }
     func tappedOnScreen()
     func rotationStartedAtLocation(_ location: CGPoint)
     func rotatedToAngle(_ location: CGPoint)
