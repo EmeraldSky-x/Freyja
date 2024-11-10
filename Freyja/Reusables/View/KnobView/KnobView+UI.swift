@@ -30,8 +30,8 @@ extension KnobView {
          rotationBaseShape.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -1 * (padding * 2))
         ].forEach({ $0.isActive = true })
         rotationBaseShape.layer.addSublayer(whiteIndicationLight)
-//        self.layer.addSublayer(screenShadow)
-//        self.layer.addSublayer(screenShape)
+        self.layer.addSublayer(screenShadow)
+        self.layer.addSublayer(screenShape)
         self.addSubview(dummyView)
         dummyView.translatesAutoresizingMaskIntoConstraints = false
         [dummyView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
