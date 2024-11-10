@@ -64,6 +64,8 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
     func tappedOnScreen() {
         mode = mode == .knob ? .slingShot : .knob
         view?.setScreenText(string: mode.rawValue)
+//        let reverceAngle = CGAffineTransform(rotationAngle: 0 / 180 * .pi)
+//        view?.setTransform(transform: reverceAngle)
     }
     func rotatedToAngle(_ location: CGPoint) {
         guard let angle = getAngle(from: location) else { return }

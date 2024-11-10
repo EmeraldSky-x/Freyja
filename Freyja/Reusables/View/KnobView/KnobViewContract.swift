@@ -20,6 +20,7 @@ protocol KnobViewModelToViewProtocol: AnyObject {
     func endPanGestureCapture()
     func setTransform(transform: CGAffineTransform)
     func setAnimation(angleInRadian: CGFloat)
+    func setReverceAnimation(angleInRadian: CGFloat)
     func cancelAllAnimations()
     func setScreenText(string: String)
 }
