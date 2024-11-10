@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreGraphics
+import Combine
 
 class KnobView: UIView {
 //MARK: - Decalrations: Logic drivers
@@ -17,6 +18,7 @@ class KnobView: UIView {
         }
     }
     var motor: KnobViewToViewModelProtocol?
+    var cancellableSet: Set<AnyCancellable> = .init()
 //MARK: - Declarations subViews
     lazy var tapGesture: UITapGestureRecognizer = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
@@ -237,11 +239,13 @@ class KnobView: UIView {
     }()
     lazy var screenText: UILabel = {
         let label = UILabel()
-        label.text = "Knob"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textColor = UIColor.black.withAlphaComponent(0.4)
+        label.font = UIFont(name: "alienleaguebold", size: 14)
+        label.numberOfLines = -1
+        label.textAlignment = .center
         return label
     }()
+    var shouldInitiateViews = true
 //MARK: - Initiation
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -251,13 +255,21 @@ class KnobView: UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        initViews()
-        self.addGestureRecognizer(panGesture)
-        screenView.addGestureRecognizer(tapGesture)
+        if shouldInitiateViews {
+            screenText.text = ConversationMessages.instructions.rawValue
+            initViews()
+            self.addGestureRecognizer(panGesture)
+            screenView.addGestureRecognizer(tapGesture)
+            motor?.conversationManager?.currentMessagePublisher.sink { [weak self] message in
+                self?.screenText.text = message
+            }.store(in: &cancellableSet)
+        }
+        shouldInitiateViews = false
     }
 //MARK: - Selectors for Gestures
     @objc func screenTapped(sender: UITapGestureRecognizer) {
         motor?.tappedOnScreen()
+        
     }
     @objc func panDetected(sender: UIPanGestureRecognizer) {
         switch sender.state {

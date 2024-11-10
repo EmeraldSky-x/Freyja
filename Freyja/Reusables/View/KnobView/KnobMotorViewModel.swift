@@ -5,14 +5,18 @@
 //  Created by Swathy Sudarsanan on 27/10/24.
 //
 import UIKit
+import Combine
 class KnobMotorViewModel {
     private weak var view: KnobViewModelToViewProtocol?
     private var currentAngleStep: Int = 0
     private var rotationStartedAngle: CGFloat = 0
     private var rotationEndedAtAngle: CGFloat = 0
     private var mode: KnobMode = .knob
-    init(view: KnobViewModelToViewProtocol) {
+    var conversationManager: ConversationManagerProtocol?
+    init(view: KnobViewModelToViewProtocol, conversationManager: ConversationManagerProtocol?) {
         self.view = view
+        self.conversationManager = conversationManager
+        self.conversationManager?.appOpened()
     }
     //MARK: - Calculate angle between three given points
     private func angleBetweenPoints(pointA: CGPoint, pointB: CGPoint, pointC: CGPoint) -> CGFloat {
@@ -65,6 +69,9 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
     func tappedOnScreen() {
         mode = mode == .knob ? .slingShot : .knob
         view?.setScreenText(string: mode.rawValue)
+        conversationManager?.appActive()
+        conversationManager?.currentMessagePublisher.send(mode.rawValue)
+        view?.setScreenText(string: mode.rawValue)
         guard let view = view?.rotationBaseShape else { return }
         let radians = atan2(view.transform.b, view.transform.a)
         self.view?.setReverseAnimation(angleInRadian: radians)
@@ -73,6 +80,8 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
 //MARK: - This method will be called when the user pans to a new location
     func rotatedToAngle(_ location: CGPoint) {
         guard let angle = getAngle(from: location) else { return }
+        conversationManager?.appActive()
+        conversationManager?.currentMessagePublisher.send(mode.rawValue)
         switch mode {
         case .knob:
             let newAngle = angle - rotationStartedAngle + rotationEndedAtAngle
@@ -82,7 +91,6 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
             break
         case .slingShot:
             let newAngle = angle - rotationStartedAngle
-            print(newAngle)
             let rotate = CGAffineTransform(rotationAngle: newAngle / 180 * .pi)
             view?.setTransform(transform: rotate)
             break
