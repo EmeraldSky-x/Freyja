@@ -6,8 +6,7 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>alienleague.ttf</string>
-		<string>alienleaguebold.ttf</string>
+		<string>EspionRounded Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

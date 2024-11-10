@@ -240,7 +240,7 @@ class KnobView: UIView {
     lazy var screenText: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.black.withAlphaComponent(0.4)
-        label.font = UIFont(name: "alienleaguebold", size: 14)
+        label.font = UIFont(name: "EspionRounded Regular", size: 10)
         label.numberOfLines = -1
         label.textAlignment = .center
         return label
@@ -256,7 +256,6 @@ class KnobView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         if shouldInitiateViews {
-            screenText.text = ConversationMessages.instructions.rawValue
             initViews()
             self.addGestureRecognizer(panGesture)
             screenView.addGestureRecognizer(tapGesture)
