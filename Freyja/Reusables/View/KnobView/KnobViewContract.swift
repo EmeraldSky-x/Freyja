@@ -17,10 +17,10 @@ protocol KnobViewToViewModelProtocol: AnyObject {
 protocol KnobViewModelToViewProtocol: AnyObject {
     var dummyView: UIView { get }
     var parentView: UIView { get }
-    func endPanGestureCapture()
+    var rotationBaseShape: UIView { get }
     func setTransform(transform: CGAffineTransform)
     func setAnimation(angleInRadian: CGFloat)
-    func setReverceAnimation(angleInRadian: CGFloat)
+    func setReverseAnimation(angleInRadian: CGFloat)
     func cancelAllAnimations()
     func setScreenText(string: String)
 }

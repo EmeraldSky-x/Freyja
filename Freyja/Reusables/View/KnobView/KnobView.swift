@@ -278,6 +278,9 @@ class KnobView: UIView {
             break
         }
     }
+    @objc func enableUserInteraction() {
+        self.isUserInteractionEnabled = true
+    }
 }
 
 
