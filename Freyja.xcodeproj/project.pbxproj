@@ -10,8 +10,7 @@
 		0108ECF52CD2927000D2A9CE /* KnobMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0108ECF42CD2927000D2A9CE /* KnobMode.swift */; };
 		011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */; };
 		011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15F22CCEA0F90069B62B /* KnobViewContract.swift */; };
-		01B8B6A02CD747200026AF5F /* alienleague.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B8B69F2CD747200026AF5F /* alienleague.ttf */; };
-		01B8B6A22CD748210026AF5F /* alienleaguebold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B8B6A12CD748210026AF5F /* alienleaguebold.ttf */; };
+		013C28102CE095A3004405CB /* EspionRounded Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 013C280E2CE095A3004405CB /* EspionRounded Regular.ttf */; };
 		01B8B6A62CD748D40026AF5F /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B6A52CD748D40026AF5F /* ConversationManager.swift */; };
 		01E0F3062CDA67AC0029F24D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3052CDA67AC0029F24D /* Node.swift */; };
 		01E0F3082CDA67EF0029F24D /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3072CDA67EF0029F24D /* ConversationModel.swift */; };
@@ -53,8 +52,7 @@
 		0108ECF42CD2927000D2A9CE /* KnobMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobMode.swift; sourceTree = "<group>"; };
 		011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobMotorViewModel.swift; sourceTree = "<group>"; };
 		011B15F22CCEA0F90069B62B /* KnobViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobViewContract.swift; sourceTree = "<group>"; };
-		01B8B69F2CD747200026AF5F /* alienleague.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alienleague.ttf; sourceTree = "<group>"; };
-		01B8B6A12CD748210026AF5F /* alienleaguebold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alienleaguebold.ttf; sourceTree = "<group>"; };
+		013C280E2CE095A3004405CB /* EspionRounded Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EspionRounded Regular.ttf"; sourceTree = "<group>"; };
 		01B8B6A52CD748D40026AF5F /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		01E0F3052CDA67AC0029F24D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		01E0F3072CDA67EF0029F24D /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
@@ -120,8 +118,7 @@
 		01B8B6A42CD748920026AF5F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				01B8B69F2CD747200026AF5F /* alienleague.ttf */,
-				01B8B6A12CD748210026AF5F /* alienleaguebold.ttf */,
+				013C280E2CE095A3004405CB /* EspionRounded Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -339,8 +336,7 @@
 			files = (
 				FF04E0452C9EA7EC00F89E10 /* Assets.xcassets in Resources */,
 				FF04E0482C9EA7EC00F89E10 /* Base in Resources */,
-				01B8B6A22CD748210026AF5F /* alienleaguebold.ttf in Resources */,
-				01B8B6A02CD747200026AF5F /* alienleague.ttf in Resources */,
+				013C28102CE095A3004405CB /* EspionRounded Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

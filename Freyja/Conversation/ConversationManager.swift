@@ -8,16 +8,16 @@
 import Foundation
 import Combine
 class ConversationManager: ConversationManagerProtocol {
-    var starterMessages: Node = Node.createLinkedList([.welcome, .name, .instructions])
+    var starterMessages: Node = Node.createLinkedList([.welcome, .name])
     var idleConverationTree: ConversationTree? = {
         let conversations: [Node] = [
-            Node.createLinkedList([.instructions, .futureModes]),
+            Node.createLinkedList([.instructions1, .instructions2, .futureModes1, .futureModes2]),
             Node.createLinkedList([.knobHelp, .slingshotHelp]),
         ]
         let tree = ConversationTree(root: RootNode(branches: conversations))
         return tree
     }()
-    var futureMessage: ConversationMessages = .instructions
+    var futureMessage: ConversationMessages = .instructions1
     var currentMessagePublisher: CurrentValueSubject<String, Never> = .init(ConversationMessages.welcome.rawValue)
     var currentMode: ConversationMode = .start
     private var timer: Timer?
@@ -55,7 +55,7 @@ class ConversationManager: ConversationManagerProtocol {
                 currentMessagePublisher.send(message.rawValue)
             } else {
                 currentMode = .idle
-                currentMessagePublisher.send(futureMessage.rawValue)
+                currentMessagePublisher.send("")
             }
         case .idle:
             if let currentNode = idleConverationTree?.currentNode {
