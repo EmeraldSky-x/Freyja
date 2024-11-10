@@ -154,7 +154,6 @@ class KnobView: UIView {
         let path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: self.bounds.width - (padding * 2), height: self.bounds.height - (padding * 2)))
         shape.path = path.cgPath
         shape.shadowOffset = CGSize(width: -1, height: -1)
-        
         let gradient = CAGradientLayer.returnGradient(colors: [UIColor.knobOuterReflectionColorStart.cgColor,
                                                                UIColor.knobOuterReflectionColorEnd.cgColor],
                                                       locations: [0.25, 0.50], maskLayer: shape)
@@ -239,7 +238,7 @@ class KnobView: UIView {
     }()
     lazy var screenText: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.black.withAlphaComponent(0.4)
+        label.textColor = UIColor.black.withAlphaComponent(0.8)
         label.font = UIFont(name: "EspionRounded Regular", size: 10)
         label.numberOfLines = -1
         label.textAlignment = .center
