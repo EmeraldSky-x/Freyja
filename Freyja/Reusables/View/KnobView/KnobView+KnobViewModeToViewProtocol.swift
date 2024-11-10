@@ -10,6 +10,7 @@ import UIKit
 
 //MARK: - KnobViewModelToViewProtocol confirmation
 extension KnobView: KnobViewModelToViewProtocol {
+//MARK: - Change the display text
     func setScreenText(string: String) {
         self.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
@@ -31,10 +32,12 @@ extension KnobView: KnobViewModelToViewProtocol {
         opacity.autoreverses = true
         grooveLight.add(opacity, forKey: nil)
     }
+//MARK: - Setting the transform for the white light in the knob
     func setTransform(transform: CGAffineTransform) {
         rotationBaseShape.transform = transform
     }
-    func setAnimation(angleInRadian: CGFloat)  {
+//MARK: - Set animation to the rotating shape
+    func setAnimation(angleInRadian: CGFloat) {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.fromValue = angleInRadian
         rotationAnimation.toValue = CGFloat.pi * (2.0 * 10)
@@ -45,7 +48,24 @@ extension KnobView: KnobViewModelToViewProtocol {
         rotationBaseShape.layer.add(rotationAnimation, forKey: "rotationAnimation")
         rotationBaseShape.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0)
     }
-    func endPanGestureCapture() {}
+//MARK: - Set the transform back to the starting position
+    func setReverseAnimation(angleInRadian: CGFloat) {
+        self.isUserInteractionEnabled = false
+        CATransaction.begin()
+        CATransaction.setCompletionBlock({ [weak self] in
+            guard let unwrappedSelf = self else { return }
+            unwrappedSelf.isUserInteractionEnabled = true
+        })
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.fromValue = angleInRadian
+        rotationAnimation.toValue = 0
+        rotationAnimation.duration = 0.2
+        rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        rotationBaseShape.layer.add(rotationAnimation, forKey: "rotationAnimation")
+        rotationBaseShape.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0)
+        CATransaction.commit()
+    }
+//MARK: - Cancel all currently running animation. Useful to cancel long running animations, like Slingshot
     func cancelAllAnimations() {
         rotationBaseShape.layer.removeAllAnimations()
         rotationBaseShape.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0)

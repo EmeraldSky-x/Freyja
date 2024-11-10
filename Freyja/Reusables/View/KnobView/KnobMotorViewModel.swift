@@ -65,13 +65,19 @@ class KnobMotorViewModel {
     }
 }
 extension KnobMotorViewModel: KnobViewToViewModelProtocol {
-    
+//MARK: - Detetced a tap on Screen
     func tappedOnScreen() {
         mode = mode == .knob ? .slingShot : .knob
         view?.setScreenText(string: mode.rawValue)
         conversationManager?.appActive()
         conversationManager?.currentMessagePublisher.send(mode.rawValue)
+        view?.setScreenText(string: mode.rawValue)
+        guard let view = view?.rotationBaseShape else { return }
+        let radians = atan2(view.transform.b, view.transform.a)
+        self.view?.setReverseAnimation(angleInRadian: radians)
+        self.rotationEndedAtAngle = 0
     }
+//MARK: - This method will be called when the user pans to a new location
     func rotatedToAngle(_ location: CGPoint) {
         guard let angle = getAngle(from: location) else { return }
         conversationManager?.appActive()
@@ -90,6 +96,7 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
             break
         }
     }
+//MARK: - This method is triggered when a pan gesture starts. Use this to track where the rotation started from
     func rotationStartedAtLocation(_ location: CGPoint) {
         guard let angle = getAngle(from: location) else { return }
         rotationStartedAngle = angle
@@ -101,6 +108,7 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
             break
         }
     }
+//MARK: - This method is triggered when the pan gesture ends. Use this method to start long running animation slike Slingshot.
     func rotationEndedAtAngle(_ location: CGPoint) {
         guard let angle = getAngle(from: location) else { return }
         rotationEndedAtAngle = angle - rotationStartedAngle + rotationEndedAtAngle
