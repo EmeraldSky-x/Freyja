@@ -10,4 +10,5 @@ import Foundation
 enum KnobMode: String, CaseIterable {
     case knob = "Knob"
     case slingShot = "Slingshot"
+    case timeMachine = "Time Machine"
 }
