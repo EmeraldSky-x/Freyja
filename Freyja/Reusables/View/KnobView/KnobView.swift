@@ -11,7 +11,7 @@ import CoreGraphics
 import Combine
 
 class KnobView: UIView {
-//MARK: - Decalrations: Logic drivers
+    //MARK: - Decalrations: Logic drivers
     var parentView: UIView {
         get {
             self
@@ -19,7 +19,7 @@ class KnobView: UIView {
     }
     var motor: KnobViewToViewModelProtocol?
     var cancellableSet: Set<AnyCancellable> = .init()
-//MARK: - Declarations subViews
+    //MARK: - Declarations subViews
     lazy var tapGesture: UITapGestureRecognizer = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
         return tap
@@ -215,9 +215,9 @@ class KnobView: UIView {
         return gradient
     }()
     lazy var referencePoint: CGPoint = {
-            let point = CGPoint(x: self.center.x, y: 0)
-            return point
-        }()
+        let point = CGPoint(x: self.center.x, y: 0)
+        return point
+    }()
     lazy var panGesture: UIPanGestureRecognizer = {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(panDetected(sender:)))
         return gesture
@@ -245,7 +245,7 @@ class KnobView: UIView {
         return label
     }()
     var shouldInitiateViews = true
-//MARK: - Initiation
+    //MARK: - Initiation
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -259,38 +259,10 @@ class KnobView: UIView {
             self.addGestureRecognizer(panGesture)
             screenView.addGestureRecognizer(tapGesture)
             motor?.conversationManager?.currentMessagePublisher.sink { [weak self] message in
+                print("--------- ", message)
                 self?.screenText.text = message
             }.store(in: &cancellableSet)
         }
         shouldInitiateViews = false
     }
-//MARK: - Selectors for Gestures
-    @objc func screenTapped(sender: UITapGestureRecognizer) {
-        motor?.tappedOnScreen()
-        
-    }
-    @objc func panDetected(sender: UIPanGestureRecognizer) {
-        switch sender.state {
-        case .began:
-            let location = sender.location(in: self)
-            motor?.rotationStartedAtLocation(location)
-        case .changed:
-            let location = sender.location(in: self)
-            if location.x > 0 && location.y > 0 && location.x < self.bounds.height && location.y < self.bounds.width {
-                motor?.rotatedToAngle(location)
-            } else {
-                sender.state = .ended
-            }
-        case .ended:
-            let location = sender.location(in: self)
-            motor?.rotationEndedAtAngle(location)
-        default:
-            break
-        }
-    }
-    @objc func enableUserInteraction() {
-        self.isUserInteractionEnabled = true
-    }
 }
-
-

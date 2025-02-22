@@ -21,6 +21,7 @@ protocol KnobViewModelToViewProtocol: AnyObject {
     var rotationBaseShape: UIView { get }
     func setTransform(transform: CGAffineTransform)
     func setAnimation(angleInRadian: CGFloat)
+    func startClockAnimation()
     func setReverseAnimation(angleInRadian: CGFloat)
     func cancelAllAnimations()
     func setScreenText(string: String)

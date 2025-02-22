@@ -36,6 +36,10 @@ class ConversationManager: ConversationManagerProtocol {
         idleTimer = nil
         initIdleTimer()
     }
+    func pauseConversation() {
+        timer?.invalidate()
+        idleTimer?.invalidate()
+    }
     private func initTimer() {
         timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
     }

@@ -12,4 +12,5 @@ protocol ConversationManagerProtocol: AnyObject {
     func appOpened()
     func appIdle()
     func appActive()
+    func pauseConversation()
 }

@@ -12,6 +12,7 @@ class KnobMotorViewModel {
     private var rotationStartedAngle: CGFloat = 0
     private var rotationEndedAtAngle: CGFloat = 0
     private var mode: KnobMode = .knob
+    private var timer: Timer?
     var conversationManager: ConversationManagerProtocol?
     init(view: KnobViewModelToViewProtocol, conversationManager: ConversationManagerProtocol?) {
         self.view = view
@@ -61,13 +62,16 @@ class KnobMotorViewModel {
             let generator = UIImpactFeedbackGenerator(style: .heavy)
             generator.impactOccurred()
             break
+        case .timeMachine:
+            break
         }
     }
 }
 extension KnobMotorViewModel: KnobViewToViewModelProtocol {
 //MARK: - Detetced a tap on Screen
     func tappedOnScreen() {
-        mode = mode == .knob ? .slingShot : .knob
+        invalidateClock()
+        switchModeToNext()
         view?.setScreenText(string: mode.rawValue)
         conversationManager?.appActive()
         conversationManager?.currentMessagePublisher.send(mode.rawValue)
@@ -76,6 +80,35 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
         let radians = atan2(view.transform.b, view.transform.a)
         self.view?.setReverseAnimation(angleInRadian: radians)
         self.rotationEndedAtAngle = 0
+        if mode == .timeMachine {
+            startClock()
+            startTimeMachineAnimation()
+            conversationManager?.pauseConversation()
+        }
+    }
+    private func invalidateClock() {
+        timer?.invalidate()
+        timer = nil
+    }
+    private func startClock() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    private func startTimeMachineAnimation() {
+        view?.startClockAnimation()
+    }
+    @objc private func updateTime() {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .none
+        formatter.timeZone = .current
+        let timeString = formatter.string(from: Date())
+        self.conversationManager?.currentMessagePublisher.send(timeString)
+    }
+    private func switchModeToNext() {
+        let allCases = KnobMode.allCases
+        if let index = allCases.firstIndex(of: mode) {
+            mode = allCases[(index + 1) % allCases.count]
+        }
     }
 //MARK: - This method will be called when the user pans to a new location
     func rotatedToAngle(_ location: CGPoint) {
@@ -94,6 +127,8 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
             let rotate = CGAffineTransform(rotationAngle: newAngle / 180 * .pi)
             view?.setTransform(transform: rotate)
             break
+        case .timeMachine:
+            break
         }
     }
 //MARK: - This method is triggered when a pan gesture starts. Use this to track where the rotation started from
@@ -105,6 +140,8 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
             break
         case .slingShot:
             view?.cancelAllAnimations()
+            break
+        case .timeMachine:
             break
         }
     }
