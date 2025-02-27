@@ -74,7 +74,8 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
         switchModeToNext()
         view?.setScreenText(string: mode.rawValue)
         conversationManager?.appActive()
-        conversationManager?.currentMessagePublisher.send(mode.rawValue)
+        let messageAttributedString = NSMutableAttributedString(string: mode.rawValue, attributes: [.font: UIFont(name: "EspionRounded-Regular", size: 14)!])
+        conversationManager?.currentMessagePublisher.send(messageAttributedString)
         view?.setScreenText(string: mode.rawValue)
         guard let view = view?.rotationBaseShape else { return }
         let radians = atan2(view.transform.b, view.transform.a)
@@ -101,8 +102,18 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
         formatter.timeStyle = .medium
         formatter.dateStyle = .none
         formatter.timeZone = .current
+        formatter.dateFormat = "HH:mm"
         let timeString = formatter.string(from: Date())
-        self.conversationManager?.currentMessagePublisher.send(timeString)
+        let messageAttributedString = NSMutableAttributedString()
+        messageAttributedString.append(NSMutableAttributedString(string: timeString, attributes: [.font: UIFont(name: "EspionRounded-Regular", size: 18)!]))
+        formatter.dateFormat = " a"
+        let amPMValue = formatter.string(from: Date())
+        messageAttributedString.append(NSMutableAttributedString(string: amPMValue, attributes: [.font: UIFont(name: "EspionRounded-Regular", size: 18)!]))
+        formatter.dateFormat = " ss"
+        let secondsString = formatter.string(from: Date())
+        messageAttributedString.append(NSMutableAttributedString(string: secondsString, attributes: [.font: UIFont.systemFont(ofSize: 8, weight: .light)]))
+        self.conversationManager?.currentMessagePublisher.send(messageAttributedString)
+        
     }
     private func switchModeToNext() {
         let allCases = KnobMode.allCases
@@ -114,20 +125,25 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
     func rotatedToAngle(_ location: CGPoint) {
         guard let angle = getAngle(from: location) else { return }
         conversationManager?.appActive()
-        conversationManager?.currentMessagePublisher.send(mode.rawValue)
         switch mode {
         case .knob:
+            
+            let messageAttributedString = NSMutableAttributedString(string: mode.rawValue, attributes: [.font: UIFont(name: "EspionRounded-Regular", size: 14)!])
+            self.conversationManager?.currentMessagePublisher.send(messageAttributedString)
             let newAngle = angle - rotationStartedAngle + rotationEndedAtAngle
             addImpactFeedback(angle: newAngle)
             let rotate = CGAffineTransform(rotationAngle: newAngle / 180 * .pi)
             view?.setTransform(transform: rotate)
             break
         case .slingShot:
+            let messageAttributedString = NSMutableAttributedString(string: mode.rawValue, attributes: [.font: UIFont(name: "EspionRounded-Regular", size: 14)!])
+            self.conversationManager?.currentMessagePublisher.send(messageAttributedString)
             let newAngle = angle - rotationStartedAngle
             let rotate = CGAffineTransform(rotationAngle: newAngle / 180 * .pi)
             view?.setTransform(transform: rotate)
             break
         case .timeMachine:
+            conversationManager?.pauseConversation()
             break
         }
     }
@@ -142,6 +158,7 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
             view?.cancelAllAnimations()
             break
         case .timeMachine:
+            conversationManager?.pauseConversation()
             break
         }
     }
@@ -154,6 +171,9 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
             let radians = rotationEndedAtAngle * .pi / 180
             view?.setAnimation(angleInRadian: radians)
             addImpactFeedback(angle: 0)
+            break
+        case .timeMachine:
+            conversationManager?.pauseConversation()
             break
         default:
             break

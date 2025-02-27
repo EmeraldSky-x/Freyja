@@ -6,7 +6,7 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>EspionRounded Regular.ttf</string>
+		<string>EspionRoundedRegular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

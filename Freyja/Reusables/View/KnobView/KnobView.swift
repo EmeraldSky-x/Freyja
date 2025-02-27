@@ -239,7 +239,7 @@ class KnobView: UIView {
     lazy var screenText: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.black.withAlphaComponent(0.8)
-        label.font = UIFont(name: "EspionRounded Regular", size: 10)
+        label.font = UIFont(name: "EspionRounded-Regular", size: 10)!
         label.numberOfLines = -1
         label.textAlignment = .center
         return label
@@ -256,11 +256,18 @@ class KnobView: UIView {
         super.layoutSubviews()
         if shouldInitiateViews {
             initViews()
+            for family in UIFont.familyNames {
+                print(family)
+                for name in UIFont.fontNames(forFamilyName: family) {
+                    print("  \(name)")
+                }
+            }
+
             self.addGestureRecognizer(panGesture)
             screenView.addGestureRecognizer(tapGesture)
             motor?.conversationManager?.currentMessagePublisher.sink { [weak self] message in
                 print("--------- ", message)
-                self?.screenText.text = message
+                self?.screenText.attributedText = message
             }.store(in: &cancellableSet)
         }
         shouldInitiateViews = false

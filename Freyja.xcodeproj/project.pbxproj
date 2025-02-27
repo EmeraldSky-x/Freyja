@@ -10,7 +10,7 @@
 		0108ECF52CD2927000D2A9CE /* KnobMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0108ECF42CD2927000D2A9CE /* KnobMode.swift */; };
 		011B15F02CCEA0B40069B62B /* KnobMotorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */; };
 		011B15F32CCEA0FA0069B62B /* KnobViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B15F22CCEA0F90069B62B /* KnobViewContract.swift */; };
-		013C28102CE095A3004405CB /* EspionRounded Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 013C280E2CE095A3004405CB /* EspionRounded Regular.ttf */; };
+		013C28102CE095A3004405CB /* EspionRoundedRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 013C280E2CE095A3004405CB /* EspionRoundedRegular.ttf */; };
 		01A3BCFA2D3D257C0023275F /* KnobView+Selectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A3BCF92D3D256E0023275F /* KnobView+Selectors.swift */; };
 		01B8B6A62CD748D40026AF5F /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B6A52CD748D40026AF5F /* ConversationManager.swift */; };
 		01E0F3062CDA67AC0029F24D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3052CDA67AC0029F24D /* Node.swift */; };
@@ -53,7 +53,7 @@
 		0108ECF42CD2927000D2A9CE /* KnobMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobMode.swift; sourceTree = "<group>"; };
 		011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobMotorViewModel.swift; sourceTree = "<group>"; };
 		011B15F22CCEA0F90069B62B /* KnobViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobViewContract.swift; sourceTree = "<group>"; };
-		013C280E2CE095A3004405CB /* EspionRounded Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EspionRounded Regular.ttf"; sourceTree = "<group>"; };
+		013C280E2CE095A3004405CB /* EspionRoundedRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EspionRoundedRegular.ttf; sourceTree = "<group>"; };
 		01A3BCF92D3D256E0023275F /* KnobView+Selectors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnobView+Selectors.swift"; sourceTree = "<group>"; };
 		01B8B6A52CD748D40026AF5F /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		01E0F3052CDA67AC0029F24D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -121,7 +121,6 @@
 		01B8B6A42CD748920026AF5F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				013C280E2CE095A3004405CB /* EspionRounded Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -185,6 +184,7 @@
 				FFF1536F2CC57FAF0023CE51 /* Reusables */,
 				01B8B6A42CD748920026AF5F /* Fonts */,
 				FF04E0442C9EA7EC00F89E10 /* Assets.xcassets */,
+				013C280E2CE095A3004405CB /* EspionRoundedRegular.ttf */,
 				FF04E0462C9EA7EC00F89E10 /* LaunchScreen.storyboard */,
 				FF04E0492C9EA7EC00F89E10 /* Info.plist */,
 			);
@@ -339,7 +339,7 @@
 			files = (
 				FF04E0452C9EA7EC00F89E10 /* Assets.xcassets in Resources */,
 				FF04E0482C9EA7EC00F89E10 /* Base in Resources */,
-				013C28102CE095A3004405CB /* EspionRounded Regular.ttf in Resources */,
+				013C28102CE095A3004405CB /* EspionRoundedRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,7 +553,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = TYCWQ2TQB6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Freyja/Info.plist;
@@ -581,7 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = TYCWQ2TQB6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Freyja/Info.plist;
