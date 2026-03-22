@@ -17,6 +17,7 @@
 		01E0F3082CDA67EF0029F24D /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3072CDA67EF0029F24D /* ConversationModel.swift */; };
 		01E0F30A2CDA680F0029F24D /* ConversationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F3092CDA680F0029F24D /* ConversationContract.swift */; };
 		01E2C37D2CDD01E000775B79 /* HomeModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E2C37C2CDD01E000775B79 /* HomeModuleBuilder.swift */; };
+		59262C7E2DC160BB00337A7E /* BaseKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59262C7D2DC160BB00337A7E /* BaseKnob.swift */; };
 		FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */; };
 		FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */; };
 		FF04E0402C9EA7EB00F89E10 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04E03F2C9EA7EB00F89E10 /* HomeController.swift */; };
@@ -60,6 +61,7 @@
 		01E0F3072CDA67EF0029F24D /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		01E0F3092CDA680F0029F24D /* ConversationContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationContract.swift; sourceTree = "<group>"; };
 		01E2C37C2CDD01E000775B79 /* HomeModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModuleBuilder.swift; sourceTree = "<group>"; };
+		59262C7D2DC160BB00337A7E /* BaseKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseKnob.swift; sourceTree = "<group>"; };
 		FF04E0382C9EA7EB00F89E10 /* Freyja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freyja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF04E03B2C9EA7EB00F89E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF04E03D2C9EA7EB00F89E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		011B15F12CCEA0C40069B62B /* KnobView */ = {
 			isa = PBXGroup;
 			children = (
+				59262C7D2DC160BB00337A7E /* BaseKnob.swift */,
 				FFF1536D2CC57F800023CE51 /* KnobView.swift */,
 				01A3BCF92D3D256E0023275F /* KnobView+Selectors.swift */,
 				011B15EF2CCEA0AC0069B62B /* KnobMotorViewModel.swift */,
@@ -297,7 +300,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					FF04E0372C9EA7EB00F89E10 = {
 						CreatedOnToolsVersion = 15.4;
@@ -376,6 +379,7 @@
 				FF04E03C2C9EA7EB00F89E10 /* AppDelegate.swift in Sources */,
 				FFA133312CD879F80055DCCF /* KnobView+UI.swift in Sources */,
 				FFF1536E2CC57F800023CE51 /* KnobView.swift in Sources */,
+				59262C7E2DC160BB00337A7E /* BaseKnob.swift in Sources */,
 				FF04E03E2C9EA7EB00F89E10 /* SceneDelegate.swift in Sources */,
 				01B8B6A62CD748D40026AF5F /* ConversationManager.swift in Sources */,
 				01E0F3082CDA67EF0029F24D /* ConversationModel.swift in Sources */,
@@ -606,7 +610,6 @@
 		FF04E0662C9EA7EC00F89E10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -626,7 +629,6 @@
 		FF04E0672C9EA7EC00F89E10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -646,7 +648,6 @@
 		FF04E0692C9EA7EC00F89E10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2V4U7L99P9;
@@ -664,7 +665,6 @@
 		FF04E06A2C9EA7EC00F89E10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2V4U7L99P9;

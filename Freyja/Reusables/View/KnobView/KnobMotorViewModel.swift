@@ -127,7 +127,6 @@ extension KnobMotorViewModel: KnobViewToViewModelProtocol {
         conversationManager?.appActive()
         switch mode {
         case .knob:
-            
             let messageAttributedString = NSMutableAttributedString(string: mode.rawValue, attributes: [.font: UIFont(name: "EspionRounded-Regular", size: 14)!])
             self.conversationManager?.currentMessagePublisher.send(messageAttributedString)
             let newAngle = angle - rotationStartedAngle + rotationEndedAtAngle
