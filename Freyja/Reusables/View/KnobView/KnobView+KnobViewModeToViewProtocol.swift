@@ -48,6 +48,18 @@ extension KnobView: KnobViewModelToViewProtocol {
         rotationBaseShape.layer.add(rotationAnimation, forKey: "rotationAnimation")
         rotationBaseShape.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0)
     }
+    func startClockAnimation() {
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.fromValue = 0
+        rotationAnimation.toValue = CGFloat.pi * 2.0
+        rotationAnimation.duration = 1.0
+        rotationAnimation.isCumulative = true
+        rotationAnimation.isRemovedOnCompletion = true
+        rotationAnimation.repeatCount = .greatestFiniteMagnitude
+        rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        rotationBaseShape.layer.add(rotationAnimation, forKey: "rotationAnimation")
+        rotationBaseShape.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0)
+    }
 //MARK: - Set the transform back to the starting position
     func setReverseAnimation(angleInRadian: CGFloat) {
         self.isUserInteractionEnabled = false

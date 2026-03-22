@@ -9,8 +9,8 @@ import Foundation
 enum ConversationMessages: String, CaseIterable, Equatable {
     case welcome = "Hi..."
     case name = "I'm Freyja"
-    case instructions1 = "You may use\ntwo modes now"
-    case instructions2 = "KNOB\n&\nSLINGSHOT"
+    case instructions1 = "You may use\nthree modes now"
+    case instructions2 = "KNOB\nSLINGSHOT\n&\nTime Machine"
     
     case futureModes1 = "More modes\n will be available..."
     case futureModes2 = "in the not so\n distant future"

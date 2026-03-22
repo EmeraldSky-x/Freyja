@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 class ConversationManager: ConversationManagerProtocol {
     var starterMessages: Node = Node.createLinkedList([.welcome, .name])
     var idleConverationTree: ConversationTree? = {
@@ -18,7 +19,7 @@ class ConversationManager: ConversationManagerProtocol {
         return tree
     }()
     var futureMessage: ConversationMessages = .instructions1
-    var currentMessagePublisher: CurrentValueSubject<String, Never> = .init(ConversationMessages.welcome.rawValue)
+    var currentMessagePublisher: CurrentValueSubject<NSMutableAttributedString, Never> = .init(NSMutableAttributedString(string: ConversationMessages.welcome.rawValue))
     var currentMode: ConversationMode = .start
     private var timer: Timer?
     private var idleTimer: Timer?
@@ -36,6 +37,10 @@ class ConversationManager: ConversationManagerProtocol {
         idleTimer = nil
         initIdleTimer()
     }
+    func pauseConversation() {
+        timer?.invalidate()
+        idleTimer?.invalidate()
+    }
     private func initTimer() {
         timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
     }
@@ -52,19 +57,22 @@ class ConversationManager: ConversationManagerProtocol {
             if let next = starterMessages.next {
                 starterMessages = next
                 let message = starterMessages.value
-                currentMessagePublisher.send(message.rawValue)
+                let messageAttributedString = NSMutableAttributedString(string: message.rawValue, attributes: [.font: UIFont(name: "EspionRounded-Regular", size: 14)!])
+                currentMessagePublisher.send(messageAttributedString)
             } else {
                 currentMode = .idle
-                currentMessagePublisher.send("")
+                currentMessagePublisher.send(NSMutableAttributedString(string: ""))
             }
         case .idle:
             if let currentNode = idleConverationTree?.currentNode {
-                currentMessagePublisher.send(currentNode.value.rawValue)
+                let messageAttributedString = NSMutableAttributedString(string: currentNode.value.rawValue, attributes: [.font: UIFont(name: "EspionRounded-Regular", size: 14)!])
+                currentMessagePublisher.send(messageAttributedString)
                 idleConverationTree?.currentNode = idleConverationTree?.currentNode?.next
             } else {
                 idleConverationTree?.startNewConversation()
                 if let currentNode = idleConverationTree?.currentNode {
-                    currentMessagePublisher.send(currentNode.value.rawValue)
+                    let messageAttributedString = NSMutableAttributedString(string: currentNode.value.rawValue, attributes: [.font: UIFont(name: "EspionRounded-Regular", size: 14)!])
+                    currentMessagePublisher.send(messageAttributedString)
                 }
             }
         }
